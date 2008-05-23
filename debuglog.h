@@ -16,9 +16,9 @@
  *
  */
 
-#ifndef __PODFUSE_H
-#define __PODFUSE_H
+#ifndef __DEBUGLOG_H
+#define __DEBUGLOG_H
 
-int podcastfs_init(int argc, char* argv[]);
+void debuglog(const char* line);
 
-#endif /* __FUSE_H */
+#endif /* __DEBUGLOG.H */

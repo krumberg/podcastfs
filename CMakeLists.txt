@@ -9,6 +9,8 @@ pkg_check_modules(FUSE fuse)
 add_executable(cpodcastfs
   main.c
   fuse.c
+  podcastlist.c
+  debuglog.c
 )
 
 include_directories( ${FUSE_INCLUDE_DIRS} ${GLIB_INCLUDE_DIRS})

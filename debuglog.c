@@ -16,9 +16,23 @@
  *
  */
 
-#ifndef __PODFUSE_H
-#define __PODFUSE_H
+#include <stdio.h>
+#include <stdlib.h>
 
-int podcastfs_init(int argc, char* argv[]);
+void debuglog(const char* line)
+{
+        static FILE* file = NULL;
 
-#endif /* __FUSE_H */
+        if (file == NULL) {
+                file = fopen("debug.txt", "wt");
+
+                void closefile() {
+                        fclose(file);
+                }
+                atexit(closefile);
+        }
+
+        fprintf(file, "%s\n", line);
+        fflush(file);
+}
+
