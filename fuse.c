@@ -40,13 +40,13 @@ static int podcastfs_getattr(const char* path, struct stat *stbuf)
         }
 
         PodcastList* list = podcastlist_get_instance();
-        if (podcastlist_is_podcast_folder(list, path + 1)) {
+        if (podcastlist_is_podcast_folder(list, path)) {
                 stbuf->st_mode = S_IFDIR | 0755;
                 stbuf->st_nlink = 2;
-        } else if (podcastlist_is_podcast_item(list, path + 1)) {
+        } else if (podcastlist_is_podcast_item(list, path)) {
                 stbuf->st_mode = S_IFREG | 0644;
                 stbuf->st_nlink = 1;
-                stbuf->st_size = podcastlist_get_item_size(list, path + 1);
+                stbuf->st_size = podcastlist_get_item_size(list, path);
         } else {
                 return -ENOENT;
         }
@@ -72,7 +72,7 @@ static int podcastfs_readdir(const char* path, void* buf, fuse_fill_dir_t filler
                 fill_item(".");
                 fill_item("..");
                 podcastlist_foreach_foldername(list, fill_item);
-        } else if (podcastlist_is_podcast_folder(list, path + 1)) {
+        } else if (podcastlist_is_podcast_folder(list, path)) {
                 podcastlist_foreach_itemname_in_folder(list, path, fill_item);
         } else {
                 return -ENOENT;
@@ -87,8 +87,9 @@ static int podcastfs_open(const char* path, struct fuse_file_info* fi)
 
         PodcastList* list = podcastlist_get_instance();
 
-        if (podcastlist_is_podcast_item(list, path + 1) && ((fi->flags & 3) == O_RDONLY) ) {
-                return 0;
+        if (podcastlist_is_podcast_item(list, path) && ((fi->flags & 3) == O_RDONLY) ) {
+      		debuglog("File found");
+      		return 0;
         }
         return -EACCES;
 }
@@ -101,10 +102,16 @@ static int podcastfs_read(const char* path, char* buf, size_t size, off_t offset
 
         PodcastList* list = podcastlist_get_instance();
 
-        if (podcastlist_is_podcast_item(list, path + 1)) {
+        if (podcastlist_is_podcast_item(list, path)) {
                 size_t n = podcastlist_read_item(list, path, buf, size, offset);
-                if (n > -1) return n;
+      		debuglog("Read ");
+		static char sn[2];
+		sn[0] = '0' + n;
+         	debuglog(sn);
+		debuglog("bytes");
+       		return n;
         }
+	debuglog("Read failed");
         return -ENOENT;
 }
 

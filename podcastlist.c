@@ -30,20 +30,20 @@ PodcastList* podcastlist_get_instance()
 
 int podcastlist_is_podcast_folder(PodcastList* list, const char* name)
 {
-        if (!strcmp(name, "ekot")) return 1;
+        if (!strcmp(name, "/ekot")) return 1;
         return 0;
 }
 
 int podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item)
 {
-        if (!strcmp(folder_and_item, "ekot/song.mp3")) return 1;
+        if (!strcmp(folder_and_item, "/ekot/song.mp3")) return 1;
         return 0;
 }
 
 void podcastlist_foreach_itemname_in_folder(PodcastList* list, const char* name,
                                             pcl_foreachname_callback fill_item)
 {
-        fill_item("/ekot/song.mp3");
+        fill_item("song.mp3");
 }
 
 void podcastlist_foreach_foldername(PodcastList* list, pcl_foreachname_callback fill_item)
@@ -59,7 +59,7 @@ size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item)
 int podcastlist_read_item(PodcastList* list, const char* folder_and_item, char* buf,
                           size_t size, size_t offset)
 {
-        const char* song = "ekot/song.mp3";
+        const char* song = "/ekot/song.mp3";
         const char* text = "Hejsan";
 
 	size_t len;
