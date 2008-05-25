@@ -20,9 +20,27 @@
 #include "podcast.h"
 
 struct Podcast {
-	GList* podcastitem_list;
-	const char* name;
+	GHashTable* podcastitem_hash;
+	const char* folder_name;
 	const char* url;
 };
 
+Podcast* podcast_new_from_url(const char* url)
+{
+        Podcast* pcast = g_new0(Podcast, 1);
+        
+}
+
+void podcast_foreach_item(Podcast* pcast, pc_foreachname_callback callback)
+{
+}
+
+void podcast_has_item(Podcast* pcast, const char* item_name)
+{
+}
+
+const char* podcast_folder_name(Podcast* pcast)
+{
+        return pcast->folder_name;
+}
 

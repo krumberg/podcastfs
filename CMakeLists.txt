@@ -12,6 +12,7 @@ add_executable(cpodcastfs
   main.c
   fuse.c
   podcastlist.c
+  podcast.c
   debuglog.c
 )
 
