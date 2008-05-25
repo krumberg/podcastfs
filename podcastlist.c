@@ -16,39 +16,49 @@
  *
  */
 
-#include "podcastlist.h"
 #include <string.h>
+#include <glib.h>
+#include "podcastlist.h"
+#include "podcast.h"
 
-struct Podcastlist {
-
+struct PodcastList {
+	GHashTable* podcast_hash;
 };
 
 PodcastList* podcastlist_get_instance()
 {
-        return 0;
+	static PodcastList* list = NULL;
+	if (list == NULL) {
+		PodcastList* list = g_new(PodcastList, 1);
+		list->podcast_hash = g_hash_table_new_full(g_str_hash, (GEqualFunc)strcmp, g_free, g_free);
+	}
+	return list;
 }
 
 int podcastlist_is_podcast_folder(PodcastList* list, const char* name)
 {
+	/* /FOLDER */
         if (!strcmp(name, "/ekot")) return 1;
         return 0;
 }
 
 int podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item)
 {
+	/* /FOLDER/SONG.MP3 */
         if (!strcmp(folder_and_item, "/ekot/song.mp3")) return 1;
         return 0;
 }
 
 void podcastlist_foreach_itemname_in_folder(PodcastList* list, const char* name,
-                                            pcl_foreachname_callback fill_item)
+                                            pc_foreachname_callback callback)
 {
-        fill_item("song.mp3");
+	/* SONG.MP3 */
+        callback("song.mp3");
 }
 
-void podcastlist_foreach_foldername(PodcastList* list, pcl_foreachname_callback fill_item)
+void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback)
 {
-        fill_item("ekot");
+        callback("ekot");
 }
 
 size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item)
@@ -59,6 +69,7 @@ size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item)
 int podcastlist_read_item(PodcastList* list, const char* folder_and_item, char* buf,
                           size_t size, size_t offset)
 {
+	/* /FOLDER/SONG.MP3 */
         const char* song = "/ekot/song.mp3";
         const char* text = "Hejsan";
 

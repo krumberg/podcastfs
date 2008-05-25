@@ -60,7 +60,7 @@ static int podcastfs_readdir(const char* path, void* buf, fuse_fill_dir_t filler
         debuglog("Inside podcastfs_readdir");
         debuglog(path);
 
-        void fill_item(const char* item)
+        void callback(const char* item)
         {
                 debuglog(item);
                 filler(buf, item, NULL, 0);
@@ -69,11 +69,11 @@ static int podcastfs_readdir(const char* path, void* buf, fuse_fill_dir_t filler
         PodcastList* list = podcastlist_get_instance();
 
         if (strcmp(path, "/") == 0) {
-                fill_item(".");
-                fill_item("..");
-                podcastlist_foreach_foldername(list, fill_item);
+                callback(".");
+                callback("..");
+                podcastlist_foreach_foldername(list, callback);
         } else if (podcastlist_is_podcast_folder(list, path)) {
-                podcastlist_foreach_itemname_in_folder(list, path, fill_item);
+                podcastlist_foreach_itemname_in_folder(list, path, callback);
         } else {
                 return -ENOENT;
         }

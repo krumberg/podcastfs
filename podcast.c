@@ -16,23 +16,13 @@
  *
  */
 
-#ifndef __PODCASTLIST_H
-#define __PODCASTLIST_H
+#include <glib.h>
+#include "podcast.h"
 
-#include <stddef.h>
+struct Podcast {
+	GList* podcastitem_list;
+	const char* name;
+	const char* url;
+};
 
-typedef struct PodcastList PodcastList;
 
-PodcastList* podcastlist_get_instance();
-
-int podcastlist_is_podcast_folder(PodcastList* list, const char* name);
-int podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item);
-
-typedef void (*pc_foreachname_callback)(const char* name);
-void podcastlist_foreach_itemname_in_folder(PodcastList* list, const char* name, pc_foreachname_callback callback);
-void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback);
-
-size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item);
-int podcastlist_read_item(PodcastList* list, const char* folder_and_item, char* buf, size_t size, size_t offset);
-
-#endif /* __PODCASTLIST.H */
