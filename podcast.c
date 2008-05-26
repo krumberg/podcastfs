@@ -28,7 +28,7 @@ struct Podcast {
 Podcast* podcast_new_from_url(const char* url)
 {
         Podcast* pcast = g_new0(Podcast, 1);
-        
+        return NULL;        
 }
 
 void podcast_foreach_item(Podcast* pcast, pc_foreachname_callback callback)

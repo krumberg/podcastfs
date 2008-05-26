@@ -16,8 +16,8 @@
  *
  */
 
-#ifndef __PODCASTLIST_H
-#define __PODCASTLIST_H
+#ifndef __PODCAST_H
+#define __PODCAST_H
 
 typedef void (*pc_foreachname_callback)(const char* name);
 

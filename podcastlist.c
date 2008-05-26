@@ -17,7 +17,9 @@
  */
 
 #include <string.h>
+#include <stdlib.h>
 #include <glib.h>
+#include "debuglog.h"
 #include "podcastlist.h"
 #include "podcast.h"
 
@@ -25,14 +27,14 @@ struct PodcastList {
 	GHashTable* podcast_hash;
 };
 
-void podcastlist_add_defaults(PodcastList* list) 
+static void podcastlist_add_default_podcasts(PodcastList* list) 
 {
         Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
         if (NULL == p) {
                 debuglog("ERROR: Unable to fetch URL");
                 exit(-1);
         }
-        g_hash_table_insert(list->podcast_hash, podcast_folder_name(p), p); 
+        g_hash_table_insert(list->podcast_hash, g_strdup(podcast_folder_name(p)), p); 
 }
 
 PodcastList* podcastlist_get_instance()
@@ -42,7 +44,7 @@ PodcastList* podcastlist_get_instance()
 	PodcastList* list = g_new(PodcastList, 1);
 		list->podcast_hash = g_hash_table_new_full(g_str_hash, (GEqualFunc)strcmp, g_free, g_free);
 	        
-                podcastlist_add_defaults(list);
+                podcastlist_add_default_podcasts(list);
 	}
 	return list;
 }
