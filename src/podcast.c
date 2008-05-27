@@ -17,6 +17,9 @@
  */
 
 #include <glib.h>
+#include <libxml/tree.h>
+#include <libxml/xpath.h>
+#include "debuglog.h"
 #include "podcast.h"
 
 struct Podcast {
@@ -28,7 +31,18 @@ struct Podcast {
 Podcast* podcast_new_from_url(const char* url)
 {
         Podcast* pcast = g_new0(Podcast, 1);
-        return NULL;        
+
+        debuglog("Creating XML-object");
+
+        xmlDocPtr doc = xmlParseFile("Ekots_lordagsintervju.xml");
+        xmlXPathContextPtr xml_context = xmlXPathNewContext(doc); 
+
+        const xmlChar* attr_url_exp = "//enclosure/attribute::url";
+        xmlXPathObjectPtr obj = xmlXPathEval(attr_url_exp, xml_context);
+       
+        debuglog("Survived");
+
+        return pcast;
 }
 
 void podcast_foreach_item(Podcast* pcast, pc_foreachname_callback callback)
