@@ -16,16 +16,14 @@
  *
  */
 
-#include "fuse.h"
-#include "podcastlist.h"
-
 #define FUSE_USE_VERSION 26
 #include <stdio.h>
 #include <string.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <fuse.h>
-#include "debuglog.h"
+#include <debuglog/debuglog.h>
+#include <podcast/podcastlist.h>
 
 static int podcastfs_getattr(const char* path, struct stat *stbuf)
 {

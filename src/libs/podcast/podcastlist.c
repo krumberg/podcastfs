@@ -19,9 +19,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <glib.h>
-#include "debuglog.h"
-#include "podcastlist.h"
-#include "podcast.h"
+#include <debuglog/debuglog.h>
+#include <podcast/podcastlist.h>
+#include <podcast/podcast.h>
 
 struct PodcastList {
 	GHashTable* podcast_hash;
@@ -32,7 +32,8 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
         debuglog("Enter podcastlist_add_default_podcasts");
         return;
 
-        Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
+        //Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
+        Podcast* p = podcast_new_from_file("Ekots_lordagsintervju.xml");
         if (NULL == p) {
                 debuglog("ERROR: Unable to fetch URL");
                 exit(-1);

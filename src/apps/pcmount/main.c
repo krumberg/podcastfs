@@ -16,23 +16,18 @@
  *
  */
 
-#ifndef __PODCASTLIST_H
-#define __PODCASTLIST_H
+#define FUSE_USE_VERSION 26
 
-#include <stddef.h>
-#include "podcast.h"
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <fuse.h>
+#include <glib.h>
 
-typedef struct PodcastList PodcastList;
+#include <pcmount/fuse.h>
 
-PodcastList* podcastlist_get_instance();
-
-int podcastlist_is_podcast_folder(PodcastList* list, const char* name);
-int podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item);
-
-void podcastlist_foreach_itemname_in_folder(PodcastList* list, const char* name, pc_foreachname_callback callback);
-void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback);
-
-size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item);
-int podcastlist_read_item(PodcastList* list, const char* folder_and_item, char* buf, size_t size, size_t offset);
-
-#endif /* __PODCASTLIST.H */
+int main(int argc, char *argv[])
+{
+        return podcastfs_init(argc, argv);
+}

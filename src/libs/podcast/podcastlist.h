@@ -16,45 +16,23 @@
  *
  */
 
-#include <glib.h>
-#include <libxml/tree.h>
-#include <libxml/xpath.h>
-#include "debuglog.h"
-#include "podcast.h"
+#ifndef __PODCASTLIST_H
+#define __PODCASTLIST_H
 
-struct Podcast {
-	GHashTable* podcastitem_hash;
-	const char* folder_name;
-	const char* url;
-};
+#include <stddef.h>
+#include <podcast/podcast.h>
 
-Podcast* podcast_new_from_url(const char* url)
-{
-        Podcast* pcast = g_new0(Podcast, 1);
+typedef struct PodcastList PodcastList;
 
-        debuglog("Creating XML-object");
+PodcastList* podcastlist_get_instance();
 
-        xmlDocPtr doc = xmlParseFile("Ekots_lordagsintervju.xml");
-        xmlXPathContextPtr xml_context = xmlXPathNewContext(doc); 
+int podcastlist_is_podcast_folder(PodcastList* list, const char* name);
+int podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item);
 
-        const xmlChar* attr_url_exp = "//enclosure/attribute::url";
-        xmlXPathObjectPtr obj = xmlXPathEval(attr_url_exp, xml_context);
-       
-        debuglog("Survived");
+void podcastlist_foreach_itemname_in_folder(PodcastList* list, const char* name, pc_foreachname_callback callback);
+void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback);
 
-        return pcast;
-}
+size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item);
+int podcastlist_read_item(PodcastList* list, const char* folder_and_item, char* buf, size_t size, size_t offset);
 
-void podcast_foreach_item(Podcast* pcast, pc_foreachname_callback callback)
-{
-}
-
-void podcast_has_item(Podcast* pcast, const char* item_name)
-{
-}
-
-const char* podcast_folder_name(Podcast* pcast)
-{
-        return pcast->folder_name;
-}
-
+#endif /* __PODCASTLIST.H */

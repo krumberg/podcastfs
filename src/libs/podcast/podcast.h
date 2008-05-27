@@ -16,18 +16,18 @@
  *
  */
 
-#define FUSE_USE_VERSION 26
+#ifndef __PODCAST_H
+#define __PODCAST_H
 
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <fuse.h>
-#include <glib.h>
+typedef void (*pc_foreachname_callback)(const char* name);
 
-#include "fuse.h"
+typedef struct Podcast Podcast;
 
-int main(int argc, char *argv[])
-{
-        return podcastfs_init(argc, argv);
-}
+Podcast* podcast_new_from_file(const char* file);
+Podcast* podcast_new_from_url(const char* url);
+void podcast_foreach_item(Podcast* pcast, pc_foreachname_callback callback);
+void podcast_has_item(Podcast* pcast, const char* item_name);
+const char* podcast_folder_name(Podcast* pcast);
+
+#endif
+
