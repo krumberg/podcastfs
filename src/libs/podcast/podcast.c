@@ -56,8 +56,15 @@ Podcast* podcast_new_from_file(const char* file)
 
         xmlDocPtr doc = xmlParseFile(file);
 
-        GList* url_list = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::url");
-        GList* size_list = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::length");
+        GList* gtitle_list = xmlXPathEvalExpressionToGList(doc, "//channel/title");
+        GList* etitle_list = xmlXPathEvalExpressionToGList(doc, "//item//title");
+        GList* url_list    = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::url");
+        GList* size_list   = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::length");
+
+        if (!gtitle_list || !etitle_list || !url_list || !size_list) {
+                debuglog("Unable to read podcast rss information");
+                return NULL;
+        }
 
         return pcast;
 }
