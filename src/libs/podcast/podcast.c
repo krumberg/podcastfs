@@ -28,19 +28,36 @@ struct Podcast {
 	const char* url;
 };
 
+static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const xmlChar* expression)
+{
+        xmlXPathContextPtr xpath_context = xmlXPathNewContext(doc);
+        xmlXPathObjectPtr obj = xmlXPathEval(expression, xpath_context);
+
+        if(xmlXPathNodeSetIsEmpty(obj->nodesetval)){
+		xmlXPathFreeObject(obj);
+                debuglog("xmlXPathEval failed");
+		return NULL;
+        }
+
+        GList* list = NULL;
+
+        for (int i=0; i < obj->nodesetval->nodeNr; i++) {
+                const xmlChar* val = xmlNodeListGetString(doc, obj->nodesetval->nodeTab[i]->xmlChildrenNode, 1);
+                printf("%s\n", val);
+                list = g_list_prepend(list, g_strdup(val));
+	        xmlFree(val);
+	}
+        return list;
+}
+
 Podcast* podcast_new_from_file(const char* file)
 {
         Podcast* pcast = g_new0(Podcast, 1);
 
-        debuglog("Creating XML-object");
-
         xmlDocPtr doc = xmlParseFile(file);
-        xmlXPathContextPtr xml_context = xmlXPathNewContext(doc); 
 
-        const xmlChar* attr_url_exp = "//enclosure/attribute::url";
-        xmlXPathObjectPtr obj = xmlXPathEval(attr_url_exp, xml_context);
-       
-        debuglog("Survived");
+        GList* url_list = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::url");
+        GList* size_list = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::length");
 
         return pcast;
 }

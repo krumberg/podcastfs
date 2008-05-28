@@ -5,5 +5,6 @@ project(apps)
 include_directories(${libs_SOURCE_DIR})
 include_directories(${apps_SOURCE_DIR})
 
+add_subdirectory(testxmlparsing)
 add_subdirectory(pcmount)
 
