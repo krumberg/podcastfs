@@ -23,28 +23,28 @@
 #include <podcast/podcast.h>
 
 struct Podcast {
-	GHashTable* podcastitem_hash;
+	GHashTable* podcastitem_hash; /* <filename, PodcastEntry> */
 	const char* folder_name;
 	const char* url;
 };
 
-static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const xmlChar* expression)
+static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expression)
 {
         xmlXPathContextPtr xpath_context = xmlXPathNewContext(doc);
-        xmlXPathObjectPtr obj = xmlXPathEval(expression, xpath_context);
+        xmlXPathObjectPtr obj = xmlXPathEval((xmlChar*)expression, xpath_context);
 
         if(xmlXPathNodeSetIsEmpty(obj->nodesetval)){
 		xmlXPathFreeObject(obj);
                 debuglog("xmlXPathEval failed");
 		return NULL;
         }
-
+        
         GList* list = NULL;
 
         for (int i=0; i < obj->nodesetval->nodeNr; i++) {
-                const xmlChar* val = xmlNodeListGetString(doc, obj->nodesetval->nodeTab[i]->xmlChildrenNode, 1);
+                xmlChar* val = xmlNodeListGetString(doc, obj->nodesetval->nodeTab[i]->xmlChildrenNode, 1);
                 printf("%s\n", val);
-                list = g_list_prepend(list, g_strdup(val));
+                list = g_list_prepend(list, g_strdup((const gchar*)val));
 	        xmlFree(val);
 	}
 
@@ -52,6 +52,37 @@ static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const xmlChar* expres
         xmlXPathFreeContext(xpath_context);
 	
         return list;
+}
+
+static void gfree_with_userparam(void* data, void* userparam)
+{
+        if (data) { 
+                g_free(data);
+        }
+}
+
+static void g_list_free_everything(GList* list)
+{
+        if (list) { 
+                g_list_foreach(list, gfree_with_userparam, NULL);
+                g_list_free(list);
+        }
+}
+
+static void podcast_create_hashtable(Podcast* pcast, GList* etitle_list, GList* url_list, GList* size_list) 
+{
+        pcast->podcastitem_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+
+        while(TRUE) {
+                if (!etitle_list || !url_list || !size_list) break;
+                
+                puts(etitle_list->data);
+                puts(url_list->data);
+
+                etitle_list = g_list_delete_link(etitle_list, etitle_list);
+                url_list    = g_list_delete_link(url_list, url_list);
+                size_list   = g_list_delete_link(size_list, size_list);
+        }
 }
 
 Podcast* podcast_new_from_file(const char* file)
@@ -67,9 +98,25 @@ Podcast* podcast_new_from_file(const char* file)
 
         if (!gtitle_list || !etitle_list || !url_list || !size_list) {
                 debuglog("Unable to read podcast rss information");
-                return NULL;
+                g_free(pcast);
+                pcast = NULL;
+                goto cleanup;
         }
 
+        /* set name of folder (url will be set in the calling podcast_new_from_url) */
+        pcast->folder_name = (gchar*) gtitle_list->data;
+        gtitle_list->data = NULL;
+        
+        podcast_create_hashtable(pcast, etitle_list, url_list, size_list);
+
+        puts("Before cleanup");
+cleanup:
+        g_list_free_everything(gtitle_list);
+        g_list_free_everything(etitle_list);
+        g_list_free_everything(url_list);
+        g_list_free_everything(size_list);
+
+        puts("Before xmlFreeDoc");
 
         xmlFreeDoc(doc);
 
