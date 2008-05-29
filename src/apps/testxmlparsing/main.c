@@ -20,7 +20,10 @@
 
 int main(int argc, char *argv[])
 {
+        getchar();
+
         Podcast* pcast = podcast_new_from_file("Ekots_lordagsintervju.xml");
 
+        getchar();
         return 0;
 }

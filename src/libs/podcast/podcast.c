@@ -47,6 +47,10 @@ static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const xmlChar* expres
                 list = g_list_prepend(list, g_strdup(val));
 	        xmlFree(val);
 	}
+
+	xmlXPathFreeObject(obj);
+        xmlXPathFreeContext(xpath_context);
+	
         return list;
 }
 
@@ -65,6 +69,9 @@ Podcast* podcast_new_from_file(const char* file)
                 debuglog("Unable to read podcast rss information");
                 return NULL;
         }
+
+
+        xmlFreeDoc(doc);
 
         return pcast;
 }
