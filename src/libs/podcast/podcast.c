@@ -81,11 +81,8 @@ static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GLis
 
 static void g_list_free_all(GList** list)
 {
-        puts("g_list_free_all");
         while (*list) {
-                puts("e while(*list)");
                 if ((*list)->data) {
-                        puts((*list)->data);
                         g_free((*list)->data);
                 }
                 *list = g_list_delete_link(*list, *list);
@@ -123,8 +120,6 @@ Podcast* podcast_new_from_file(const char* file)
         pcast->folder_name = steal_string(gtitle_list);
 
         podcast_create_hashtable(pcast, &etitle_list, &url_list, &size_list);
-
-        puts("Before xmlFreeDoc");
 
 cleanup:
         g_list_free_all(&gtitle_list);
