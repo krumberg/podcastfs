@@ -18,6 +18,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <assert.h>
 #include <glib.h>
 #include <debuglog/debuglog.h>
 #include <podcast/podcastlist.h>
@@ -30,7 +31,6 @@ struct PodcastList {
 static void podcastlist_add_default_podcasts(PodcastList* list)
 {
         debuglog("Enter podcastlist_add_default_podcasts");
-        return;
 
         //Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
         Podcast* p = podcast_new_from_file("Ekots_lordagsintervju.xml");
@@ -39,6 +39,8 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
                 exit(-1);
         }
         g_hash_table_insert(list->podcast_hash, g_strdup(podcast_folder_name(p)), p);
+
+        debuglog("Left podcastlist_add_default_podcasts");
 }
 
 PodcastList* podcastlist_get_instance()
@@ -46,7 +48,7 @@ PodcastList* podcastlist_get_instance()
         debuglog("Enter podcastlist_get_instance");
 	static PodcastList* list = NULL;
 	if (list == NULL) {
-	        PodcastList* list = g_new(PodcastList, 1);
+	        list = g_new(PodcastList, 1);
 		list->podcast_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, (GDestroyNotify)podcast_free);
 
                 podcastlist_add_default_podcasts(list);
@@ -73,6 +75,8 @@ gboolean podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_i
 void podcastlist_foreach_trackname_in_folder(PodcastList* list, const char* name,
                                             pc_foreachname_callback callback)
 {
+        debuglog("Enter podcastlist_foreach_trackname_in_folder");
+
         Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, name);
 
         if (pcast==NULL) {
@@ -80,19 +84,30 @@ void podcastlist_foreach_trackname_in_folder(PodcastList* list, const char* name
                 exit(-1);
         }
 
+        debuglog("About to call podcastlist_foreach_trackname");
+
         podcast_foreach_trackname(pcast, callback);
 }
 
 static void foreach_ghash_callback (gpointer key, gpointer value, gpointer user_data)
 {
+        debuglog("Called foreach_ghash_callback");
+
         pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
 
         callback((gchar*)key);
+
+        debuglog("Left foreach_ghash_callback");
 }
 
 void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback)
 {
+        debuglog("Enter podcastlist_foreach_foldername");
+        assert(list!=NULL);
+        assert(list->podcast_hash!=NULL);
+
         g_hash_table_foreach(list->podcast_hash, foreach_ghash_callback, callback);
+        debuglog("Leaving podcastlist_foreach_foldername");
 }
 
 size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item)
