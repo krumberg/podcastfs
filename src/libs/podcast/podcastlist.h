@@ -27,7 +27,7 @@ typedef struct PodcastList PodcastList;
 PodcastList* podcastlist_get_instance();
 
 gboolean podcastlist_is_podcast_folder(PodcastList* list, const char* name);
-gboolean podcastlist_is_podcast_track(PodcastList* list, const char* folder_and_item);
+gboolean podcastlist_is_podcast_track(PodcastList* list, const char* folder_and_track);
 
 void podcastlist_foreach_trackname_in_folder(PodcastList* list, const char* name, pc_foreachname_callback callback);
 void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback);

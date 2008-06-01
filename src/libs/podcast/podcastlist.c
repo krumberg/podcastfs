@@ -141,18 +141,15 @@ size_t podcastlist_get_item_size(PodcastList* list, const gchar* folder_and_item
         return 6;
 }
 
-int podcastlist_read_item(PodcastList* list, const gchar* folder_and_item, gchar* buf,
+int podcastlist_read_item(PodcastList* list, const gchar* folder_and_track, gchar* buf,
                           size_t size, size_t offset)
 {
-	/* /FOLDER/SONG.MP3 */
-        const gchar* song = "/ekot/song.mp3";
-        const gchar* text = "Hejsan";
-
-	size_t len;
-	if(strcmp(folder_and_item, song) != 0) {
-		return -1;
+        if (FALSE == podcastlist_is_podcast_track(list, folder_and_track)) {
+                return -1;
         }
 
+        const gchar* text = "Hejsan";
+	size_t len;
 	len = strlen(text);
 	if (offset < len) {
 		if (offset + size > len) {
