@@ -143,7 +143,7 @@ void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback c
         debuglog("Leaving podcastlist_foreach_foldername");
 }
 
-size_t podcastlist_get_track_size(PodcastList* list, const gchar* folder_and_item)
+size_t podcastlist_get_track_size(PodcastList* list, const gchar* folder_and_track)
 {
         PodcastTrack* track = podcastlist_get_podcast_track(list, folder_and_track);
 
