@@ -16,15 +16,17 @@
  *
  */
 
+#include <stdlib.h>
 #include <assert.h>
 #include <glib.h>
 #include <libxml/tree.h>
 #include <libxml/xpath.h>
 #include <debuglog/debuglog.h>
 #include <podcast/podcast.h>
+#include <podcast/podcasttrack.h>
 
 struct Podcast {
-	GHashTable* podcastitem_hash; /* <filename, PodcastTrack> */
+	GHashTable* podcasttrack_hash; /* <filename, PodcastTrack> */
 	const char* folder_name;
 	const char* url;
 };
@@ -56,7 +58,7 @@ static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expressi
 
 static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GList** p_url_list, GList** p_size_list)
 {
-        pcast->podcastitem_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, g_free);
+        pcast->podcasttrack_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, (GDestroyNotify)podcasttrack_free);
 
         GList* etitle_list = *p_etitle_list;
         GList* url_list    = *p_url_list;
@@ -65,9 +67,10 @@ static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GLis
         while(TRUE) {
                 if (!etitle_list || !url_list || !size_list) break;
 
-                puts(etitle_list->data);
-                puts(url_list->data);
-                puts(size_list->data);
+                PodcastTrack* podct = podcasttrack_new((const gchar*) etitle_list->data, (const gchar*) url_list->data,
+                                                       atol((const gchar*) size_list->data));
+
+                g_hash_table_insert(pcast->podcasttrack_hash, g_strdup(podcasttrack_filename(podct)), podct);
 
                 etitle_list = g_list_delete_link(etitle_list, etitle_list);
                 url_list    = g_list_delete_link(url_list, url_list);
@@ -136,11 +139,12 @@ Podcast* podcast_new_from_url(const char* url)
         return NULL;
 }
 
-void podcast_foreach_item(Podcast* pcast, pc_foreachname_callback callback)
+void podcast_foreach_track(Podcast* pcast, pc_foreachname_callback callback)
 {
+        
 }
 
-void podcast_has_item(Podcast* pcast, const char* item_name)
+void podcast_has_track(Podcast* pcast, const char* item_name)
 {
 }
 

@@ -10,6 +10,7 @@ pkg_check_modules(CURL libcurl)
 add_library(podcast
   podcastlist.c
   podcast.c
+  podcasttrack.c
 )
 
 include_directories(${GLIB_INCLUDE_DIRS} ${XML_INCLUDE_DIRS} ${CURL_INCLUDE_DIRS})

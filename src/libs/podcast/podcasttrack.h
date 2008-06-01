@@ -21,9 +21,10 @@
 
 typedef struct PodcastTrack PodcastTrack;
 
-PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url);
+PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url, size_t size);
 void podcasttrack_free(PodcastTrack* podct);
 
 const gchar* podcasttrack_filename(PodcastTrack* podct);
+size_t podcasttrack_size(PodcastTrack* podct);
 
 #endif /* __PODCASTTRACK.H */

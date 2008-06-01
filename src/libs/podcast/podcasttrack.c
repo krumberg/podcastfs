@@ -16,17 +16,22 @@
  *
  */
 
+#include <glib.h>
+#include "podcasttrack.h"
+
 struct PodcastTrack {
         gchar* filename;
         gchar* url;
+        size_t size;
 };
 
-PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url)
+PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url, size_t size)
 {
         PodcastTrack* podct = g_new(PodcastTrack, 1);
 
         podct->filename = g_strconcat(title, ".mp3", NULL);
         podct->url      = g_strdup(url);
+        podct->size     = size;
 
         return podct;
 }
@@ -43,6 +48,11 @@ void podcasttrack_free(PodcastTrack* podct)
 const gchar* podcasttrack_filename(PodcastTrack* podct)
 {
         return podct->filename;
+}
+
+size_t podcasttrack_size(PodcastTrack* podct)
+{
+        return podct->size;
 }
 
 
