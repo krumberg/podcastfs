@@ -69,12 +69,16 @@ gboolean podcastlist_is_podcast_track(PodcastList* list, const gchar* folder_and
 {
         gboolean has = FALSE;
 
-        gchar** folder_and_track_array = g_strsplit(folder_and_track, "/", 2);
+        gchar** folder_and_track_array = g_strsplit(folder_and_track + 1, "/", 2);
 
         if (NULL == folder_and_track) {
                 debuglog("Failed to split string");
                 goto cleanup;
         }
+
+        debuglog("in podcastlist_is_podcast_track after split which resulted in");
+        debuglog(folder_and_track_array[0]);
+        debuglog(folder_and_track_array[1]);
 
         Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, folder_and_track_array[0]);
         if (pcast == NULL) {

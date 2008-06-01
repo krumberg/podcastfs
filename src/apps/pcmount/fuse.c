@@ -46,6 +46,8 @@ static int podcastfs_getattr(const char* path, struct stat *stbuf)
                 stbuf->st_nlink = 1;
                 stbuf->st_size = podcastlist_get_item_size(list, path);
         } else {
+                debuglog("podcastfs_getattr failed on path");
+                debuglog(path);
                 return -ENOENT;
         }
 
@@ -73,6 +75,8 @@ static int podcastfs_readdir(const char* path, void* buf, fuse_fill_dir_t filler
         } else if (podcastlist_is_podcast_folder(list, path)) {
                 podcastlist_foreach_trackname_in_folder(list, path, callback);
         } else {
+                debuglog("podcastfs_readdir failed on path");
+                debuglog(path);
                 return -ENOENT;
         }
         return 0;
