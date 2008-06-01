@@ -18,7 +18,9 @@
 
 #include <string.h>
 #include <glib.h>
-#include "podcasttrack.h"
+#include <gio/gio.h>
+#include <debuglog/debuglog.h>
+#include <podcast/podcasttrack.h>
 
 struct PodcastTrack {
         gchar* filename;
@@ -58,16 +60,36 @@ size_t podcasttrack_size(PodcastTrack* podct)
 
 int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset)
 {
-        const gchar* text = "Hejsan";
-	size_t len;
-	len = strlen(text);
-	if (offset < len) {
-		if (offset + size > len) {
-			size = len - offset;
-                }
-		memcpy(buf, text + offset, size);
-	} else {
-		size = 0;
+        GFile* track_url_file = NULL;
+        GFileInputStream* fis = NULL;
+        GInputStream* is = NULL;
+        GSeekable* seekable = NULL;
+        int bytesread = -1;
+
+        track_url_file = g_file_new_for_uri(podct->url);
+        if (NULL == track_url_file ) {
+                debuglog("get_file_from_uri failed");
+                goto cleanup;
         }
-        return size;
+
+        fis = g_file_read(track_url_file, NULL, NULL);
+        if (NULL == fis) {
+                debuglog("g_file_read failed");
+                goto cleanup;
+        }
+        is = G_INPUT_STREAM(fis);
+        seekable = G_SEEKABLE(fis);
+
+        
+
+cleanup:
+        if (is) {
+                g_input_stream_close(is, NULL, NULL);
+                g_object_unref(is);
+        }
+        if (track_url_file) {
+                g_object_unref(track_url_file);
+        }
+
+        return bytesread;
 }
