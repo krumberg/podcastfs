@@ -27,6 +27,6 @@ static void print_filename(const gchar* filename)
 int main(int argc, char *argv[])
 {
         Podcast* pcast = podcast_new_from_file("Ekots_lordagsintervju.xml");
-        podcast_foreach_track(pcast, print_filename);
+        podcast_foreach_trackname(pcast, print_filename);
         return 0;
 }

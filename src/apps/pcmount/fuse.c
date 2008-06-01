@@ -71,7 +71,7 @@ static int podcastfs_readdir(const char* path, void* buf, fuse_fill_dir_t filler
                 callback("..");
                 podcastlist_foreach_foldername(list, callback);
         } else if (podcastlist_is_podcast_folder(list, path)) {
-                podcastlist_foreach_itemname_in_folder(list, path, callback);
+                podcastlist_foreach_trackname_in_folder(list, path, callback);
         } else {
                 return -ENOENT;
         }

@@ -27,8 +27,10 @@ typedef struct Podcast Podcast;
 
 Podcast* podcast_new_from_file(const gchar* file);
 Podcast* podcast_new_from_url(const gchar* url);
-void podcast_foreach_track(Podcast* pcast, pc_foreachname_callback callback);
-void podcast_has_track(Podcast* pcast, const gchar* item_name);
+void podcast_free(Podcast* pcast);
+
+void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback);
+gboolean podcast_has_track(Podcast* pcast, const gchar* track_name);
 const gchar* podcast_folder_name(Podcast* pcast);
 
 #endif

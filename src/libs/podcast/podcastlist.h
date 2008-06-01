@@ -26,10 +26,10 @@ typedef struct PodcastList PodcastList;
 
 PodcastList* podcastlist_get_instance();
 
-int podcastlist_is_podcast_folder(PodcastList* list, const char* name);
-int podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item);
+gboolean podcastlist_is_podcast_folder(PodcastList* list, const char* name);
+gboolean podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item);
 
-void podcastlist_foreach_itemname_in_folder(PodcastList* list, const char* name, pc_foreachname_callback callback);
+void podcastlist_foreach_trackname_in_folder(PodcastList* list, const char* name, pc_foreachname_callback callback);
 void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback);
 
 size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item);

@@ -47,37 +47,52 @@ PodcastList* podcastlist_get_instance()
 	static PodcastList* list = NULL;
 	if (list == NULL) {
 	        PodcastList* list = g_new(PodcastList, 1);
-		list->podcast_hash = g_hash_table_new_full(g_str_hash, (GEqualFunc)strcmp, g_free, g_free);
+		list->podcast_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, (GDestroyNotify)podcast_free);
 
                 podcastlist_add_default_podcasts(list);
 	}
 	return list;
 }
 
-int podcastlist_is_podcast_folder(PodcastList* list, const char* name)
+gboolean podcastlist_is_podcast_folder(PodcastList* list, const char* name)
 {
-	/* /FOLDER */
-        if (!strcmp(name, "/ekot")) return 1;
-        return 0;
+        const char* key = name + 1;
+        if (g_hash_table_lookup(list->podcast_hash, key)) {
+                return TRUE;
+        }
+        return FALSE;
 }
 
-int podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item)
+gboolean podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item)
 {
 	/* /FOLDER/SONG.MP3 */
-        if (!strcmp(folder_and_item, "/ekot/song.mp3")) return 1;
-        return 0;
+        if (!strcmp(folder_and_item, "/ekot/song.mp3")) return TRUE;
+        return FALSE;
 }
 
-void podcastlist_foreach_itemname_in_folder(PodcastList* list, const char* name,
+void podcastlist_foreach_trackname_in_folder(PodcastList* list, const char* name,
                                             pc_foreachname_callback callback)
 {
-	/* SONG.MP3 */
-        callback("song.mp3");
+        Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, name);
+
+        if (pcast==NULL) {
+                debuglog("ERROR no such folder");
+                exit(-1);
+        }
+
+        podcast_foreach_trackname(pcast, callback);
+}
+
+static void foreach_ghash_callback (gpointer key, gpointer value, gpointer user_data)
+{
+        pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
+
+        callback((gchar*)key);
 }
 
 void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback)
 {
-        callback("ekot");
+        g_hash_table_foreach(list->podcast_hash, foreach_ghash_callback, callback);
 }
 
 size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item)

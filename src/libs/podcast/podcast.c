@@ -27,8 +27,8 @@
 
 struct Podcast {
 	GHashTable* podcasttrack_hash; /* <filename, PodcastTrack> */
-	const gchar* folder_name;
-	const gchar* url;
+	gchar* folder_name;
+	gchar* url;
 };
 
 static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expression)
@@ -139,20 +139,31 @@ Podcast* podcast_new_from_url(const gchar* url)
         return NULL;
 }
 
-static void foreach_ghash_callback (gpointer key,gpointer value, gpointer user_data)
+void podcast_free(Podcast* pcast)
+{
+        if (pcast) {
+                g_free(pcast->folder_name);
+                g_free(pcast->url);
+                g_hash_table_destroy(pcast->podcasttrack_hash);
+                g_free(pcast);
+        }
+}
+
+static void foreach_ghash_callback (gpointer key, gpointer value, gpointer user_data)
 {
         pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
 
         callback((gchar*)key);
 }
 
-void podcast_foreach_track(Podcast* pcast, pc_foreachname_callback callback)
+void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback)
 {
         g_hash_table_foreach(pcast->podcasttrack_hash, foreach_ghash_callback, callback);
 }
 
-void podcast_has_track(Podcast* pcast, const gchar* item_name)
+gboolean podcast_has_track(Podcast* pcast, const gchar* item_name)
 {
+        return g_hash_table_lookup(pcast->podcasttrack_hash, item_name) != NULL;
 }
 
 const gchar* podcast_folder_name(Podcast* pcast)
