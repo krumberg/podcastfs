@@ -11,5 +11,6 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -std=gnu99")
 
 add_subdirectory(testxmlparsing)
 add_subdirectory(testpodcastlist)
+add_subdirectory(testdownloadxml)
 add_subdirectory(pcmount)
 

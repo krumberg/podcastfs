@@ -17,8 +17,11 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
 #include <assert.h>
+#include <unistd.h>
 #include <glib.h>
+#include <gio/gio.h>
 #include <libxml/tree.h>
 #include <libxml/xpath.h>
 #include <debuglog/debuglog.h>
@@ -134,9 +137,54 @@ cleanup:
         return pcast;
 }
 
-Podcast* podcast_new_from_url(const gchar* url)
+static GFile* g_file_new_tmpfile()
 {
-        return NULL;
+        char buf[30];
+        strcpy(buf, "/tmp/rssfileXXXXXX");
+        close(mkstemp(buf));
+        GFile* tmp_file = g_file_new_for_path(buf);
+
+        return tmp_file;
+}
+
+Podcast* podcast_new_from_url(const gchar* url_path)
+{
+        GFile* url_file = NULL;
+        GFile* tmp_file = NULL;
+        gchar* tmp_file_path = NULL;
+        Podcast* podcast = NULL;
+
+        url_file = g_file_new_for_uri(url_path);
+        if (NULL == url_file) {
+                debuglog("Unable to resolve URL");
+                goto cleanup;
+        }
+        tmp_file = g_file_new_tmpfile();
+        if (NULL == tmp_file) {
+                debuglog("Unable to create tmpfile");
+                goto cleanup;
+        }
+        /* downloading rss */
+        if (FALSE == g_file_copy(url_file, tmp_file, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, NULL)) {
+                debuglog("Downloading RSS failed");
+                goto cleanup;
+        }
+
+        tmp_file_path = g_file_get_path(tmp_file);
+        podcast = podcast_new_from_file(tmp_file_path);
+
+cleanup:
+        if (tmp_file) {
+                g_file_delete(tmp_file, NULL, NULL);
+                g_object_unref(G_OBJECT(tmp_file));
+        }
+        if (tmp_file_path) {
+                g_free(tmp_file_path);
+        }
+        if (url_file) {
+                g_object_unref(G_OBJECT(url_file));
+        }
+        return podcast;
 }
 
 void podcast_free(Podcast* pcast)

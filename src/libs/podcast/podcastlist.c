@@ -20,6 +20,7 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <glib.h>
+#include <gio/gio.h>
 #include <debuglog/debuglog.h>
 #include <podcast/podcastlist.h>
 #include <podcast/podcast.h>
@@ -32,8 +33,7 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
 {
         debuglog("Enter podcastlist_add_default_podcasts");
 
-        //Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
-        Podcast* p = podcast_new_from_file("/tmp/Ekots_lordagsintervju.xml");
+        Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
         if (NULL == p) {
                 debuglog("ERROR: Unable to fetch URL");
                 exit(-1);
@@ -48,6 +48,8 @@ PodcastList* podcastlist_get_instance()
         debuglog("Enter podcastlist_get_instance");
 	static PodcastList* list = NULL;
 	if (list == NULL) {
+                g_type_init();
+
 	        list = g_new(PodcastList, 1);
 		list->podcast_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, (GDestroyNotify)podcast_free);
 
@@ -143,7 +145,14 @@ void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback c
 
 size_t podcastlist_get_track_size(PodcastList* list, const gchar* folder_and_item)
 {
-        return 6;
+        PodcastTrack* track = podcastlist_get_podcast_track(list, folder_and_track);
+
+        if (NULL == track) {
+                debuglog("Error: No such file found");
+                return -1;
+        }
+
+        return podcasttrack_size(track);
 }
 
 int podcastlist_read_track(PodcastList* list, const gchar* folder_and_track, gchar* buf,
