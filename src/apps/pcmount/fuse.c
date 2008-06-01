@@ -44,7 +44,7 @@ static int podcastfs_getattr(const char* path, struct stat *stbuf)
         } else if (podcastlist_is_podcast_track(list, path)) {
                 stbuf->st_mode = S_IFREG | 0644;
                 stbuf->st_nlink = 1;
-                stbuf->st_size = podcastlist_get_item_size(list, path);
+                stbuf->st_size = podcastlist_get_track_size(list, path);
         } else {
                 debuglog("podcastfs_getattr failed on path");
                 debuglog(path);
@@ -105,7 +105,7 @@ static int podcastfs_read(const char* path, char* buf, size_t size, off_t offset
         PodcastList* list = podcastlist_get_instance();
 
         if (podcastlist_is_podcast_track(list, path)) {
-                size_t n = podcastlist_read_item(list, path, buf, size, offset);
+                size_t n = podcastlist_read_track(list, path, buf, size, offset);
                 debuglog("Read bytes");
        		return n;
         }

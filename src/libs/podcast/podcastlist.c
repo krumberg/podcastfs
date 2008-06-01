@@ -141,30 +141,20 @@ void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback c
         debuglog("Leaving podcastlist_foreach_foldername");
 }
 
-size_t podcastlist_get_item_size(PodcastList* list, const gchar* folder_and_item)
+size_t podcastlist_get_track_size(PodcastList* list, const gchar* folder_and_item)
 {
         return 6;
 }
 
-int podcastlist_read_item(PodcastList* list, const gchar* folder_and_track, gchar* buf,
+int podcastlist_read_track(PodcastList* list, const gchar* folder_and_track, gchar* buf,
                           size_t size, size_t offset)
 {
-        if (FALSE == podcastlist_is_podcast_track(list, folder_and_track)) {
+        PodcastTrack* track = podcastlist_get_podcast_track(list, folder_and_track);
+
+        if (NULL == track) {
+                debuglog("Error: No such file found");
                 return -1;
         }
 
-        const gchar* text = "Hejsan";
-	size_t len;
-	len = strlen(text);
-	if (offset < len) {
-		if (offset + size > len) {
-			size = len - offset;
-                }
-		memcpy(buf, text + offset, size);
-	} else {
-		size = 0;
-        }
-
-	return size;
+        return podcasttrack_read(track, buf, size, offset);
 }
-

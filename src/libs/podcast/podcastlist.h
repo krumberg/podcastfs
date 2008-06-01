@@ -32,7 +32,7 @@ gboolean podcastlist_is_podcast_track(PodcastList* list, const char* folder_and_
 void podcastlist_foreach_trackname_in_folder(PodcastList* list, const char* name, pc_foreachname_callback callback);
 void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback);
 
-size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item);
-int podcastlist_read_item(PodcastList* list, const char* folder_and_item, char* buf, size_t size, size_t offset);
+size_t podcastlist_get_track_size(PodcastList* list, const char* folder_and_item);
+int podcastlist_read_track(PodcastList* list, const char* folder_and_item, char* buf, size_t size, size_t offset);
 
 #endif /* __PODCASTLIST.H */

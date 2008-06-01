@@ -16,6 +16,7 @@
  *
  */
 
+#include <string.h>
 #include <glib.h>
 #include "podcasttrack.h"
 
@@ -55,5 +56,18 @@ size_t podcasttrack_size(PodcastTrack* podct)
         return podct->size;
 }
 
-
-
+int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset)
+{
+        const gchar* text = "Hejsan";
+	size_t len;
+	len = strlen(text);
+	if (offset < len) {
+		if (offset + size > len) {
+			size = len - offset;
+                }
+		memcpy(buf, text + offset, size);
+	} else {
+		size = 0;
+        }
+        return size;
+}

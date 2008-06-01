@@ -28,5 +28,6 @@ void podcasttrack_free(PodcastTrack* podct);
 
 const gchar* podcasttrack_filename(PodcastTrack* podct);
 size_t podcasttrack_size(PodcastTrack* podct);
+int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset);
 
 #endif /* __PODCASTTRACK.H */
