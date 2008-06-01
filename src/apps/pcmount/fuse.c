@@ -102,11 +102,7 @@ static int podcastfs_read(const char* path, char* buf, size_t size, off_t offset
 
         if (podcastlist_is_podcast_item(list, path)) {
                 size_t n = podcastlist_read_item(list, path, buf, size, offset);
-      		debuglog("Read ");
-		static char sn[2];
-		sn[0] = '0' + n;
-         	debuglog(sn);
-		debuglog("bytes");
+                debuglog("Read bytes");
        		return n;
         }
 	debuglog("Read failed");

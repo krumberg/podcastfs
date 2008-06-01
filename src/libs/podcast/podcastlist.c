@@ -27,7 +27,7 @@ struct PodcastList {
 	GHashTable* podcast_hash;
 };
 
-static void podcastlist_add_default_podcasts(PodcastList* list) 
+static void podcastlist_add_default_podcasts(PodcastList* list)
 {
         debuglog("Enter podcastlist_add_default_podcasts");
         return;
@@ -38,7 +38,7 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
                 debuglog("ERROR: Unable to fetch URL");
                 exit(-1);
         }
-        g_hash_table_insert(list->podcast_hash, g_strdup(podcast_folder_name(p)), p); 
+        g_hash_table_insert(list->podcast_hash, g_strdup(podcast_folder_name(p)), p);
 }
 
 PodcastList* podcastlist_get_instance()
@@ -48,7 +48,7 @@ PodcastList* podcastlist_get_instance()
 	if (list == NULL) {
 	        PodcastList* list = g_new(PodcastList, 1);
 		list->podcast_hash = g_hash_table_new_full(g_str_hash, (GEqualFunc)strcmp, g_free, g_free);
-	        
+
                 podcastlist_add_default_podcasts(list);
 	}
 	return list;

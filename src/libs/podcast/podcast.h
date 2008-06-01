@@ -19,15 +19,17 @@
 #ifndef __PODCAST_H
 #define __PODCAST_H
 
-typedef void (*pc_foreachname_callback)(const char* name);
+#include <glib.h>
+
+typedef void (*pc_foreachname_callback)(const gchar* name);
 
 typedef struct Podcast Podcast;
 
-Podcast* podcast_new_from_file(const char* file);
-Podcast* podcast_new_from_url(const char* url);
+Podcast* podcast_new_from_file(const gchar* file);
+Podcast* podcast_new_from_url(const gchar* url);
 void podcast_foreach_track(Podcast* pcast, pc_foreachname_callback callback);
-void podcast_has_track(Podcast* pcast, const char* item_name);
-const char* podcast_folder_name(Podcast* pcast);
+void podcast_has_track(Podcast* pcast, const gchar* item_name);
+const gchar* podcast_folder_name(Podcast* pcast);
 
 #endif
 

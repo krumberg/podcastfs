@@ -1,5 +1,5 @@
 /*
- *    podcastfs - a simple fuse filesystem for mounting podcast
+ *    podcastfs - a simple fuse filesystem for mounting podcasts
  *    Copyright (C) 2008,  Kristian Rumberg (kristianrumberg@gmail.com)
  *
  *    Permission to use, copy, modify, and/or distribute this software for any
@@ -16,20 +16,14 @@
  *
  */
 
-// Hej
-
-#define FUSE_USE_VERSION 26
-
-#include <stdio.h>
-#include <string.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <fuse.h>
-#include <glib.h>
-
-#include <pcmount/fuse.h>
+#include <podcast/podcast.h>
 
 int main(int argc, char *argv[])
 {
-        return podcastfs_init(argc, argv);
+        getchar();
+
+        Podcast* pcast = podcast_new_from_file("Ekots_lordagsintervju.xml");
+
+        getchar();
+        return 0;
 }

@@ -16,14 +16,17 @@
  *
  */
 
+#include <stdio.h>
 #include <podcast/podcast.h>
+
+static void print_filename(const gchar* filename)
+{
+        puts(filename);
+}
 
 int main(int argc, char *argv[])
 {
-        getchar();
-
         Podcast* pcast = podcast_new_from_file("Ekots_lordagsintervju.xml");
-
-        getchar();
+        podcast_foreach_track(pcast, print_filename);
         return 0;
 }
