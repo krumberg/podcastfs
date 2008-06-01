@@ -41,7 +41,7 @@ static int podcastfs_getattr(const char* path, struct stat *stbuf)
         if (podcastlist_is_podcast_folder(list, path)) {
                 stbuf->st_mode = S_IFDIR | 0755;
                 stbuf->st_nlink = 2;
-        } else if (podcastlist_is_podcast_item(list, path)) {
+        } else if (podcastlist_is_podcast_track(list, path)) {
                 stbuf->st_mode = S_IFREG | 0644;
                 stbuf->st_nlink = 1;
                 stbuf->st_size = podcastlist_get_item_size(list, path);
@@ -85,7 +85,7 @@ static int podcastfs_open(const char* path, struct fuse_file_info* fi)
 
         PodcastList* list = podcastlist_get_instance();
 
-        if (podcastlist_is_podcast_item(list, path) && ((fi->flags & 3) == O_RDONLY) ) {
+        if (podcastlist_is_podcast_track(list, path) && ((fi->flags & 3) == O_RDONLY) ) {
       		debuglog("File found");
       		return 0;
         }
@@ -100,7 +100,7 @@ static int podcastfs_read(const char* path, char* buf, size_t size, off_t offset
 
         PodcastList* list = podcastlist_get_instance();
 
-        if (podcastlist_is_podcast_item(list, path)) {
+        if (podcastlist_is_podcast_track(list, path)) {
                 size_t n = podcastlist_read_item(list, path, buf, size, offset);
                 debuglog("Read bytes");
        		return n;

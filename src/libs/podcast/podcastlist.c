@@ -33,7 +33,7 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
         debuglog("Enter podcastlist_add_default_podcasts");
 
         //Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
-        Podcast* p = podcast_new_from_file("Ekots_lordagsintervju.xml");
+        Podcast* p = podcast_new_from_file("/tmp/Ekots_lordagsintervju.xml");
         if (NULL == p) {
                 debuglog("ERROR: Unable to fetch URL");
                 exit(-1);
@@ -56,28 +56,50 @@ PodcastList* podcastlist_get_instance()
 	return list;
 }
 
-gboolean podcastlist_is_podcast_folder(PodcastList* list, const char* name)
+gboolean podcastlist_is_podcast_folder(PodcastList* list, const gchar* name)
 {
-        const char* key = name + 1;
+        const gchar* key = name + 1;
         if (g_hash_table_lookup(list->podcast_hash, key)) {
                 return TRUE;
         }
         return FALSE;
 }
 
-gboolean podcastlist_is_podcast_item(PodcastList* list, const char* folder_and_item)
+gboolean podcastlist_is_podcast_track(PodcastList* list, const gchar* folder_and_track)
 {
-	/* /FOLDER/SONG.MP3 */
-        if (!strcmp(folder_and_item, "/ekot/song.mp3")) return TRUE;
-        return FALSE;
+        gboolean has = FALSE;
+
+        gchar** folder_and_track_array = g_strsplit(folder_and_track, "/", 2);
+
+        if (NULL == folder_and_track) {
+                debuglog("Failed to split string");
+                goto cleanup;
+        }
+
+        Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, folder_and_track_array[0]);
+        if (pcast == NULL) {
+                goto cleanup;
+        }
+        if (podcast_has_track(pcast, folder_and_track_array[1])) {
+                has = TRUE;
+                goto cleanup;
+        }
+
+cleanup:
+        if (folder_and_track_array) {
+                g_strfreev(folder_and_track_array);
+        }
+        return has;
 }
 
-void podcastlist_foreach_trackname_in_folder(PodcastList* list, const char* name,
+void podcastlist_foreach_trackname_in_folder(PodcastList* list, const gchar* name,
                                             pc_foreachname_callback callback)
 {
         debuglog("Enter podcastlist_foreach_trackname_in_folder");
 
-        Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, name);
+        debuglog(name);
+
+        Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, (name + 1));
 
         if (pcast==NULL) {
                 debuglog("ERROR no such folder");
@@ -110,17 +132,17 @@ void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback c
         debuglog("Leaving podcastlist_foreach_foldername");
 }
 
-size_t podcastlist_get_item_size(PodcastList* list, const char* folder_and_item)
+size_t podcastlist_get_item_size(PodcastList* list, const gchar* folder_and_item)
 {
         return 6;
 }
 
-int podcastlist_read_item(PodcastList* list, const char* folder_and_item, char* buf,
+int podcastlist_read_item(PodcastList* list, const gchar* folder_and_item, gchar* buf,
                           size_t size, size_t offset)
 {
 	/* /FOLDER/SONG.MP3 */
-        const char* song = "/ekot/song.mp3";
-        const char* text = "Hejsan";
+        const gchar* song = "/ekot/song.mp3";
+        const gchar* text = "Hejsan";
 
 	size_t len;
 	if(strcmp(folder_and_item, song) != 0) {
