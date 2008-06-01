@@ -38,7 +38,7 @@ static int podcastfs_getattr(const char* path, struct stat *stbuf)
         }
 
         PodcastList* list = podcastlist_get_instance();
-        if (podcastlist_is_podcast_folder(list, path)) {
+        if (podcastlist_is_podcast_folder(list, (path + 1))) {
                 stbuf->st_mode = S_IFDIR | 0755;
                 stbuf->st_nlink = 2;
         } else if (podcastlist_is_podcast_track(list, path)) {
@@ -72,7 +72,7 @@ static int podcastfs_readdir(const char* path, void* buf, fuse_fill_dir_t filler
                 callback(".");
                 callback("..");
                 podcastlist_foreach_foldername(list, callback);
-        } else if (podcastlist_is_podcast_folder(list, path)) {
+        } else if (podcastlist_is_podcast_folder(list, (path + 1))) {
                 podcastlist_foreach_trackname_in_folder(list, path, callback);
         } else {
                 debuglog("podcastfs_readdir failed on path");

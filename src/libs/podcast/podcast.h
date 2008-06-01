@@ -19,7 +19,7 @@
 #ifndef __PODCAST_H
 #define __PODCAST_H
 
-#include <glib.h>
+#include <podcast/podcasttrack.h>
 
 typedef void (*pc_foreachname_callback)(const gchar* name);
 
@@ -31,6 +31,7 @@ void podcast_free(Podcast* pcast);
 
 void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback);
 gboolean podcast_has_track(Podcast* pcast, const gchar* track_name);
+PodcastTrack* podcast_get_track(Podcast* pcast, const gchar* track_name);
 const gchar* podcast_folder_name(Podcast* pcast);
 
 #endif

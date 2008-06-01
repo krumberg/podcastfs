@@ -56,18 +56,20 @@ PodcastList* podcastlist_get_instance()
 	return list;
 }
 
-gboolean podcastlist_is_podcast_folder(PodcastList* list, const gchar* name)
+static Podcast* podcastlist_get_podcast(PodcastList* list, const char* name)
 {
-        const gchar* key = name + 1;
-        if (g_hash_table_lookup(list->podcast_hash, key)) {
-                return TRUE;
-        }
-        return FALSE;
+        return (Podcast*) g_hash_table_lookup(list->podcast_hash, name);
 }
 
-gboolean podcastlist_is_podcast_track(PodcastList* list, const gchar* folder_and_track)
+gboolean podcastlist_is_podcast_folder(PodcastList* list, const gchar* name)
 {
-        gboolean has = FALSE;
+        return (FALSE != podcastlist_get_podcast(list, name));
+}
+
+static PodcastTrack* podcastlist_get_podcast_track(PodcastList* list, const gchar* folder_and_track)
+{
+        Podcast* pcast = NULL;
+        PodcastTrack* ptrack = NULL;
 
         gchar** folder_and_track_array = g_strsplit(folder_and_track + 1, "/", 2);
 
@@ -76,24 +78,27 @@ gboolean podcastlist_is_podcast_track(PodcastList* list, const gchar* folder_and
                 goto cleanup;
         }
 
-        debuglog("in podcastlist_is_podcast_track after split which resulted in");
+        debuglog("in podcastlist_get_podcast_track after split from");
+        debuglog(folder_and_track);
+        debuglog("resulted in");
         debuglog(folder_and_track_array[0]);
         debuglog(folder_and_track_array[1]);
 
-        Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, folder_and_track_array[0]);
-        if (pcast == NULL) {
+        pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, folder_and_track_array[0]);
+        if (NULL == pcast) {
                 goto cleanup;
         }
-        if (podcast_has_track(pcast, folder_and_track_array[1])) {
-                has = TRUE;
-                goto cleanup;
-        }
-
+        ptrack = podcast_get_track(pcast, folder_and_track_array[1]);
 cleanup:
         if (folder_and_track_array) {
                 g_strfreev(folder_and_track_array);
         }
-        return has;
+        return ptrack;
+}
+
+gboolean podcastlist_is_podcast_track(PodcastList* list, const gchar* folder_and_track)
+{
+        return (FALSE != podcastlist_get_podcast_track(list, folder_and_track));
 }
 
 void podcastlist_foreach_trackname_in_folder(PodcastList* list, const gchar* name,

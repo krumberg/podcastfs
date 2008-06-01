@@ -19,6 +19,8 @@
 #ifndef __PODCASTTRACK_H
 #define __PODCASTTRACK_H
 
+#include <glib.h>
+
 typedef struct PodcastTrack PodcastTrack;
 
 PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url, size_t size);

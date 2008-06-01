@@ -161,9 +161,14 @@ void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback)
         g_hash_table_foreach(pcast->podcasttrack_hash, foreach_ghash_callback, callback);
 }
 
+PodcastTrack* podcast_get_track(Podcast* pcast, const gchar* track_name)
+{
+        return (PodcastTrack*)g_hash_table_lookup(pcast->podcasttrack_hash, track_name);
+}
+
 gboolean podcast_has_track(Podcast* pcast, const gchar* item_name)
 {
-        return g_hash_table_lookup(pcast->podcasttrack_hash, item_name) != NULL;
+        return (FALSE != podcast_get_track(pcast, item_name));
 }
 
 const gchar* podcast_folder_name(Podcast* pcast)
