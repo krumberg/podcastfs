@@ -1,5 +1,5 @@
 /*
- *    podcastfs - a simple fuse filesystem for mounting podcast
+ *    podcastfs - a simple fuse filesystem for mounting podcasts
  *    Copyright (C) 2008,  Kristian Rumberg (kristianrumberg@gmail.com)
  *
  *    Permission to use, copy, modify, and/or distribute this software for any
@@ -24,7 +24,7 @@
 #include <podcast/podcast.h>
 
 struct Podcast {
-	GHashTable* podcastitem_hash; /* <filename, PodcastEntry> */
+	GHashTable* podcastitem_hash; /* <filename, PodcastTrack> */
 	const char* folder_name;
 	const char* url;
 };
@@ -90,11 +90,11 @@ static void g_list_free_all(GList** list)
         *list = NULL;
 }
 
-static gchar* steal_string(GList* list)
+static gchar* steal_string(GList** list)
 {
-        assert(list!=NULL);
-        gchar* str = (gchar*) list->data;
-        list->data = NULL;
+        assert(*list!=NULL);
+        gchar* str = (gchar*) (*list)->data;
+        *list = g_list_delete_link(*list, *list);
         return str;
 }
 
@@ -117,7 +117,7 @@ Podcast* podcast_new_from_file(const char* file)
         }
 
         /* set name of folder (url will be set in the calling podcast_new_from_url) */
-        pcast->folder_name = steal_string(gtitle_list);
+        pcast->folder_name = steal_string(&gtitle_list);
 
         podcast_create_hashtable(pcast, &etitle_list, &url_list, &size_list);
 
