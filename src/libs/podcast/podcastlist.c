@@ -84,7 +84,7 @@ static PodcastTrack* podcastlist_get_podcast_track(PodcastList* list, const gcha
         debuglog(folder_and_track_array[0]);
         debuglog(folder_and_track_array[1]);
 
-        pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, folder_and_track_array[0]);
+        pcast = podcastlist_get_podcast(list, folder_and_track_array[0]);
         if (NULL == pcast) {
                 goto cleanup;
         }
@@ -108,7 +108,7 @@ void podcastlist_foreach_trackname_in_folder(PodcastList* list, const gchar* nam
 
         debuglog(name);
 
-        Podcast* pcast = (Podcast*) g_hash_table_lookup(list->podcast_hash, (name + 1));
+        Podcast* pcast = podcastlist_get_podcast(list, name + 1);
 
         if (pcast==NULL) {
                 debuglog("ERROR no such folder");
