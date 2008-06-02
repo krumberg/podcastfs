@@ -16,10 +16,11 @@
  *
  */
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-void debuglog(const char* line)
+void debuglog(const char* line, ...)
 {
         static FILE* file = NULL;
 
@@ -32,7 +33,14 @@ void debuglog(const char* line)
                 atexit(closefile);
         }
 
-        fprintf(file, "%s\n", line);
+        char buf[128];
+        va_list args;
+
+        va_start(args, line);
+        vsnprintf(buf, 1023, line, args);
+        va_end(args);
+
+        fprintf(file, "%s\n", buf);
         fflush(file);
 }
 

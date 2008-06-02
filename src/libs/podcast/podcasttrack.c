@@ -66,7 +66,9 @@ int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset
         GSeekable* seekable = NULL;
         int bytesread = -1;
 
-        track_url_file = g_file_new_for_uri(podct->url);
+        debuglog("Will read %d bytes at offset %d", size, offset);
+
+        track_url_file = g_file_new_for_uri("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml"); //podct->url);
         if (NULL == track_url_file ) {
                 debuglog("get_file_from_uri failed");
                 goto cleanup;
@@ -80,8 +82,15 @@ int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset
         is = G_INPUT_STREAM(fis);
         seekable = G_SEEKABLE(fis);
 
-        
+        if (FALSE == g_seekable_can_seek(seekable)) {
+                debuglog("g_seekable_can_seek failed");
+                goto cleanup;
+        }
 
+        g_seekable_seek(seekable, offset, G_SEEK_SET, NULL, NULL);
+        bytesread = g_input_stream_read(is, buf, size, NULL, NULL);
+
+        debuglog("Read %d bytes", bytesread);
 cleanup:
         if (is) {
                 g_input_stream_close(is, NULL, NULL);

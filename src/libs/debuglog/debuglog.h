@@ -19,6 +19,6 @@
 #ifndef __DEBUGLOG_H
 #define __DEBUGLOG_H
 
-void debuglog(const char* line);
+void debuglog(const char* line, ...);
 
 #endif /* __DEBUGLOG.H */
