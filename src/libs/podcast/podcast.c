@@ -47,7 +47,8 @@ static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expressi
 
         GList* list = NULL;
 
-        for (int i=0; i < obj->nodesetval->nodeNr; i++) {
+        int i;
+        for (i=0; i < obj->nodesetval->nodeNr; i++) {
                 xmlChar* val = xmlNodeListGetString(doc, obj->nodesetval->nodeTab[i]->xmlChildrenNode, 1);
                 list = g_list_prepend(list, g_strdup((const gchar*)val));
 	        xmlFree(val);

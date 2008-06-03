@@ -13,7 +13,6 @@ add_library(podcast
   podcasttrack.c
 )
 
-include_directories(${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS} ${XML_INCLUDE_DIRS} ${CURL_INCLUDE_DIRS})
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -std=gnu99")
-target_link_libraries(podcast debuglog ${GLIB_LIBRARIES} ${GIO_LIBRARIES} ${XML_LIBRARIES} ${CURL_LIBRARIES})
+include_directories(${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS} ${XML_INCLUDE_DIRS})
+target_link_libraries(podcast debuglog ${GLIB_LIBRARIES} ${GIO_LIBRARIES} ${XML_LIBRARIES})
 
