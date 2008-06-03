@@ -14,5 +14,4 @@ add_library(podcast
 )
 
 include_directories(${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS} ${XML_INCLUDE_DIRS})
-target_link_libraries(podcast debuglog ${GLIB_LIBRARIES} ${GIO_LIBRARIES} ${XML_LIBRARIES})
-
+target_link_libraries(podcast debuglog urlfetch ${GLIB_LIBRARIES} ${GIO_LIBRARIES} ${XML_LIBRARIES})

@@ -18,7 +18,7 @@
 
 #include <string.h>
 #include <glib.h>
-#include <gio/gio.h>
+#include <urlfetch/urlfetch.h>
 #include <debuglog/debuglog.h>
 #include <podcast/podcasttrack.h>
 
@@ -55,53 +55,14 @@ const gchar* podcasttrack_filename(PodcastTrack* podct)
 
 size_t podcasttrack_size(PodcastTrack* podct)
 {
-        return 7409;
+        return podct->size;
 }
 
 int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset)
 {
-        GFile* track_url_file = NULL;
-        GFileInputStream* fis = NULL;
-        GInputStream* is = NULL;
-        GSeekable* seekable = NULL;
-        int bytesread = -1;
-
-        debuglog("Will read %d bytes at offset %d", size, offset);
-
-        track_url_file = g_file_new_for_uri("http://users.student.lth.se/f03kr/svggame.xml"); //podct->url);
-        if (NULL == track_url_file ) {
-                debuglog("get_file_from_uri failed");
-                goto cleanup;
+        if (urlfetch_data_in_range(podct->url, buf, size, offset) < 0) {
+                return -1;
         }
 
-        fis = g_file_read(track_url_file, NULL, NULL);
-        if (NULL == fis) {
-                debuglog("g_file_read failed");
-                goto cleanup;
-        }
-        is = G_INPUT_STREAM(fis);
-        seekable = G_SEEKABLE(fis);
-
-        if (FALSE == g_seekable_can_seek(seekable)) {
-                debuglog("g_seekable_can_seek failed");
-                goto cleanup;
-        }
-
-        g_seekable_seek(seekable, offset, G_SEEK_SET, NULL, NULL);
-
-        debuglog("Tell reported position %d", g_seekable_tell(seekable));
-
-        bytesread = g_input_stream_read(is, buf, size, NULL, NULL);
-
-        debuglog("Read %d bytes", bytesread);
-cleanup:
-        if (is) {
-                g_input_stream_close(is, NULL, NULL);
-                g_object_unref(is);
-        }
-        if (track_url_file) {
-                g_object_unref(track_url_file);
-        }
-
-        return bytesread;
+        return size;
 }
