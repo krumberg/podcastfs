@@ -20,7 +20,6 @@
 #include <stdlib.h>
 #include <assert.h>
 #include <glib.h>
-#include <gio/gio.h>
 #include <debuglog/debuglog.h>
 #include <podcast/podcastlist.h>
 #include <podcast/podcast.h>
@@ -48,11 +47,8 @@ PodcastList* podcastlist_get_instance()
         debuglog("Enter podcastlist_get_instance");
 	static PodcastList* list = NULL;
 	if (list == NULL) {
-                g_type_init();
-
 	        list = g_new(PodcastList, 1);
 		list->podcast_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, (GDestroyNotify)podcast_free);
-
                 podcastlist_add_default_podcasts(list);
 	}
 	return list;

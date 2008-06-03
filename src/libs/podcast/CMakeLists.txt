@@ -4,7 +4,6 @@ project(podcast)
 
 find_package(PkgConfig)
 pkg_check_modules(GLIB glib-2.0)
-pkg_check_modules(GIO gio-2.0)
 pkg_check_modules(XML xml2)
 
 add_library(podcast
@@ -13,5 +12,5 @@ add_library(podcast
   podcasttrack.c
 )
 
-include_directories(${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS} ${XML_INCLUDE_DIRS})
-target_link_libraries(podcast debuglog urlfetch ${GLIB_LIBRARIES} ${GIO_LIBRARIES} ${XML_LIBRARIES})
+include_directories(${GLIB_INCLUDE_DIRS} ${XML_INCLUDE_DIRS})
+target_link_libraries(podcast debuglog urlfetch ${GLIB_LIBRARIES} ${XML_LIBRARIES})
