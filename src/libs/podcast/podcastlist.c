@@ -16,6 +16,7 @@
  *
  */
 
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -40,9 +41,25 @@ static void podcastlist_add_podcast(PodcastList* list, const gchar* url)
 
 static void podcastlist_add_default_podcasts(PodcastList* list)
 {
-        podcastlist_add_podcast(list, "http://www.sr.se/podradio/xml/p3_morgonpasset.xml");
-        podcastlist_add_podcast(list, "http://www.sr.se/podradio/xml/p1_lantz.xml");
-        podcastlist_add_podcast(list, "http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
+        char buf[512];
+        FILE* rss_conf_file = fopen("/home/f03kr/.podcastfsrc", "rt");
+        if (NULL == rss_conf_file) {
+                debuglog("Unable to open config file");
+                return;
+        }
+
+        while(1) {
+                fgets(buf, 511, rss_conf_file);
+                buf[strlen(buf)] = 0;
+                const char* p_beg = strstr(buf, "http");
+                if (NULL == p_beg) {
+                        break;
+                }
+                podcastlist_add_podcast(list, p_beg);
+                debuglog("Added podcast %s", p_beg);
+        }
+        
+        fclose(rss_conf_file);
 }
 
 PodcastList* podcastlist_get_instance()
