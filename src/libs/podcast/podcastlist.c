@@ -28,18 +28,21 @@ struct PodcastList {
 	GHashTable* podcast_hash;
 };
 
-static void podcastlist_add_default_podcasts(PodcastList* list)
+static void podcastlist_add_podcast(PodcastList* list, const gchar* url)
 {
-        debuglog("Enter podcastlist_add_default_podcasts");
-
-        Podcast* p = podcast_new_from_url("http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
+        Podcast* p = podcast_new_from_url(url);
         if (NULL == p) {
                 debuglog("ERROR: Unable to fetch URL");
-                exit(-1);
+                return;
         }
         g_hash_table_insert(list->podcast_hash, g_strdup(podcast_folder_name(p)), p);
+}
 
-        debuglog("Left podcastlist_add_default_podcasts");
+static void podcastlist_add_default_podcasts(PodcastList* list)
+{
+        podcastlist_add_podcast(list, "http://www.sr.se/podradio/xml/p3_morgonpasset.xml");
+        podcastlist_add_podcast(list, "http://www.sr.se/podradio/xml/p1_lantz.xml");
+        podcastlist_add_podcast(list, "http://www.sr.se/Podradio/xml/Ekots_lordagsintervju.xml");
 }
 
 PodcastList* podcastlist_get_instance()
