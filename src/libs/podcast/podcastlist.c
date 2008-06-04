@@ -17,6 +17,7 @@
  */
 
 #include <stdio.h>
+#include <pwd.h>
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
@@ -41,8 +42,15 @@ static void podcastlist_add_podcast(PodcastList* list, const gchar* url)
 
 static void podcastlist_add_default_podcasts(PodcastList* list)
 {
+        char conf_path[512];
         char buf[512];
-        FILE* rss_conf_file = fopen("/home/f03kr/.podcastfsrc", "rt");
+        struct passwd* pws;
+        pws = getpwuid(geteuid());
+        
+        sprintf(conf_path, "/home/%s/.podcastfsrc", pws->pw_name);
+        debuglog("Conf path");
+        debuglog(conf_path);
+        FILE* rss_conf_file = fopen(conf_path, "rt");
         if (NULL == rss_conf_file) {
                 debuglog("Unable to open config file");
                 return;
