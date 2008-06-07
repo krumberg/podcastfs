@@ -42,20 +42,19 @@ static void podcastlist_add_podcast(PodcastList* list, const gchar* url)
 
 static void podcastlist_add_default_podcasts(PodcastList* list)
 {
-        char conf_path[512];
-        char buf[512];
         struct passwd* pws;
         pws = getpwuid(geteuid());
-        
+
+        char conf_path[512];
         sprintf(conf_path, "/home/%s/.podcastfsrc", pws->pw_name);
-        debuglog("Conf path");
-        debuglog(conf_path);
+
         FILE* rss_conf_file = fopen(conf_path, "rt");
         if (NULL == rss_conf_file) {
                 debuglog("Unable to open config file");
                 return;
         }
 
+        char buf[512];
         while(1) {
                 fgets(buf, 511, rss_conf_file);
                 buf[strlen(buf)] = 0;
@@ -66,7 +65,7 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
                 podcastlist_add_podcast(list, p_beg);
                 debuglog("Added podcast %s", p_beg);
         }
-        
+
         fclose(rss_conf_file);
 }
 
