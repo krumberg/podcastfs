@@ -9,5 +9,4 @@ include_directories( ${GLIB_INCLUDE_DIRS} ${XML_INCLUDE_DIRS} ${CURL_INCLUDE_DIR
 
 add_subdirectory(testxmlparsing)
 add_subdirectory(testpodcastlist)
-add_subdirectory(testseekanddownload)
 add_subdirectory(pcmount)
