@@ -46,7 +46,7 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
         pws = getpwuid(geteuid());
 
         char conf_path[512];
-        sprintf(conf_path, "/home/%s/.podcastfsrc", pws->pw_name);
+        sprintf(conf_path, "%s/.podcastfslist", getenv("HOME"));
 
         FILE* rss_conf_file = fopen(conf_path, "rt");
         if (NULL == rss_conf_file) {
