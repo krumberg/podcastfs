@@ -1,5 +1,5 @@
 /*
- *    podcastfs - a simple fuse filesystem for mounting podcast
+ *    podcastfs - a simple fuse filesystem for mounting podcasts
  *    Copyright (C) 2008,  Kristian Rumberg (kristianrumberg@gmail.com)
  *
  *    Permission to use, copy, modify, and/or distribute this software for any
