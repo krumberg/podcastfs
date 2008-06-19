@@ -10,6 +10,7 @@ add_library(podcast
   podcastlist.c
   podcast.c
   podcasttrack.c
+  util.c
 )
 
 include_directories(${GLIB_INCLUDE_DIRS} ${XML_INCLUDE_DIRS})

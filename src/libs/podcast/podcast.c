@@ -26,6 +26,7 @@
 #include <debuglog/debuglog.h>
 #include <podcast/podcast.h>
 #include <podcast/podcasttrack.h>
+#include <podcast/util.h>
 
 struct Podcast {
 	GTree* podcasttrack_tree; /* <filename, PodcastTrack> */
@@ -57,11 +58,6 @@ static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expressi
         xmlXPathFreeContext(xpath_context);
 
         return list;
-}
-
-static gint strcmp_with_data(gconstpointer a, gconstpointer b, gpointer user_data)
-{
-        return strcmp((const char*)a, (const char*)b);
 }
 
 static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GList** p_url_list, GList** p_size_list)
