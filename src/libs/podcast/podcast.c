@@ -28,7 +28,7 @@
 #include <podcast/podcasttrack.h>
 
 struct Podcast {
-	GHashTable* podcasttrack_hash; /* <filename, PodcastTrack> */
+	GTree* podcasttrack_tree; /* <filename, PodcastTrack> */
 	gchar* folder_name;
 	gchar* url;
 };
@@ -59,9 +59,14 @@ static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expressi
         return list;
 }
 
+static gint strcmp_with_data(gconstpointer a, gconstpointer b, gpointer user_data)
+{
+        return strcmp((const char*)a, (const char*)b);
+}
+
 static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GList** p_url_list, GList** p_size_list)
 {
-        pcast->podcasttrack_hash = g_hash_table_new_full(g_str_hash, g_str_equal, g_free, (GDestroyNotify)podcasttrack_free);
+        pcast->podcasttrack_tree = g_tree_new_full(strcmp_with_data, NULL, g_free, (GDestroyNotify)podcasttrack_free);
 
         GList* etitle_list = *p_etitle_list;
         GList* url_list    = *p_url_list;
@@ -73,7 +78,7 @@ static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GLis
                 PodcastTrack* podct = podcasttrack_new((const gchar*) etitle_list->data, (const gchar*) url_list->data,
                                                        atol((const gchar*) size_list->data));
 
-                g_hash_table_insert(pcast->podcasttrack_hash, g_strdup(podcasttrack_filename(podct)), podct);
+                g_tree_insert(pcast->podcasttrack_tree, g_strdup(podcasttrack_filename(podct)), podct);
 
                 etitle_list = g_list_delete_link(etitle_list, etitle_list);
                 url_list    = g_list_delete_link(url_list, url_list);
@@ -152,26 +157,28 @@ void podcast_free(Podcast* pcast)
         if (pcast) {
                 g_free(pcast->folder_name);
                 g_free(pcast->url);
-                g_hash_table_destroy(pcast->podcasttrack_hash);
+                g_tree_destroy(pcast->podcasttrack_tree);
                 g_free(pcast);
         }
 }
 
-static void foreach_ghash_callback (gpointer key, gpointer value, gpointer user_data)
+static gboolean foreach_callback (gpointer key, gpointer value, gpointer user_data)
 {
         pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
 
         callback((gchar*)key);
+
+        return FALSE;
 }
 
 void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback)
 {
-        g_hash_table_foreach(pcast->podcasttrack_hash, foreach_ghash_callback, callback);
+        g_tree_foreach(pcast->podcasttrack_tree, foreach_callback, callback);
 }
 
 PodcastTrack* podcast_get_track(Podcast* pcast, const gchar* track_name)
 {
-        return (PodcastTrack*)g_hash_table_lookup(pcast->podcasttrack_hash, track_name);
+        return (PodcastTrack*)g_tree_lookup(pcast->podcasttrack_tree, track_name);
 }
 
 gboolean podcast_has_track(Podcast* pcast, const gchar* item_name)
