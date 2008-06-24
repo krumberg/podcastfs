@@ -68,11 +68,12 @@ static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GLis
         GList* url_list    = *p_url_list;
         GList* size_list   = *p_size_list;
 
+        int index = 0;
         while(TRUE) {
                 if (!etitle_list || !url_list || !size_list) break;
 
                 PodcastTrack* podct = podcasttrack_new((const gchar*) etitle_list->data, (const gchar*) url_list->data,
-                                                       atol((const gchar*) size_list->data));
+                                                       atol((const gchar*) size_list->data), ++index);
 
                 g_tree_insert(pcast->podcasttrack_tree, g_strdup(podcasttrack_filename(podct)), podct);
 

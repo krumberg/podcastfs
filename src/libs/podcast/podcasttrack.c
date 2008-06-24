@@ -26,15 +26,17 @@ struct PodcastTrack {
         gchar* filename;
         gchar* url;
         size_t size;
+        int index;
 };
 
-PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url, size_t size)
+PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url, size_t size, int index)
 {
         PodcastTrack* podct = g_new(PodcastTrack, 1);
 
-        podct->filename = g_strconcat(title, ".mp3", NULL);
+        podct->filename = g_strdup_printf("%03d_%s%s", index, title, ".mp3");
         podct->url      = g_strdup(url);
         podct->size     = size;
+        podct->index    = index;
 
         return podct;
 }
