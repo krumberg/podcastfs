@@ -17,10 +17,11 @@
  */
 
 #include <stdio.h>
-#include <pwd.h>
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <unistd.h>
+#include <pwd.h>
 #include <glib.h>
 #include <debuglog/debuglog.h>
 #include <podcast/podcastlist.h>

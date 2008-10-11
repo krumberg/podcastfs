@@ -24,6 +24,7 @@
 #include <libxml/tree.h>
 #include <libxml/xpath.h>
 #include <debuglog/debuglog.h>
+#include <urlfetch/urlfetch.h>
 #include <podcast/podcast.h>
 #include <podcast/podcasttrack.h>
 #include <podcast/util.h>
