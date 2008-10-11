@@ -20,6 +20,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <glib.h>
 #include <curl/curl.h>
 #include <curl/types.h>
 #include <curl/easy.h>
@@ -76,15 +77,17 @@ static size_t write_file_callback(void *ptr, size_t size, size_t nmemb, void *da
         return (nmemb * size);
 }
 
-int urlfetch_download_tmpfile(const char* url, char* tmppath)
+char* urlfetch_download_tmpfile(const char* url)
 {
         CURL *curl_handle;
 
-        strcpy(tmppath, "/tmp/rssfileXXXXXX");
+        char* tmppath = g_strdup("/tmp/rssfileXXXXXX");
+
         close(mkstemp(tmppath));
         FILE* file = fopen(tmppath, "wb");
         if (NULL == file) {
-                return -1;
+                g_free(tmppath);
+                return NULL;
         }
 
         curl_handle = curl_easy_init();
@@ -99,5 +102,5 @@ int urlfetch_download_tmpfile(const char* url, char* tmppath)
         curl_easy_cleanup(curl_handle);
         fclose(file);
 
-        return 0;
+        return tmppath;
 }

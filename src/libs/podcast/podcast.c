@@ -142,12 +142,14 @@ cleanup:
 
 Podcast* podcast_new_from_url(const gchar* url_path)
 {
-        char tmp_path[256];
-        if (urlfetch_download_tmpfile(url_path, tmp_path) < 0) {
+        char* tmppath = urlfetch_download_tmpfile(url_path);
+        if (NULL == tmppath) {
                 return NULL;
         }
 
-        return podcast_new_from_file(tmp_path);
+        Podcast* podc = podcast_new_from_file(tmppath);
+        g_free(tmppath);
+        return podc;
 }
 
 void podcast_free(Podcast* pcast)

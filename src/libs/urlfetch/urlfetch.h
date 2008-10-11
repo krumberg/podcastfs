@@ -22,6 +22,6 @@
 #include <stddef.h>
 
 int urlfetch_data_in_range(const char* url, char* buf, size_t size, size_t offset);
-int urlfetch_download_tmpfile(const char* url, char* tmppath);
+char* urlfetch_download_tmpfile(const char* url);
 
 #endif /* __URLFETCH.H */
