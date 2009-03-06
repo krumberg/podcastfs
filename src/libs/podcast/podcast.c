@@ -37,158 +37,158 @@ struct Podcast {
 
 static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expression)
 {
-        xmlXPathContextPtr xpath_context = xmlXPathNewContext(doc);
-        xmlXPathObjectPtr obj = xmlXPathEval((xmlChar*)expression, xpath_context);
+	xmlXPathContextPtr xpath_context = xmlXPathNewContext(doc);
+	xmlXPathObjectPtr obj = xmlXPathEval((xmlChar*)expression, xpath_context);
 
-        if(xmlXPathNodeSetIsEmpty(obj->nodesetval)){
+	if(xmlXPathNodeSetIsEmpty(obj->nodesetval)){
 		xmlXPathFreeObject(obj);
-                debuglog("xmlXPathEval failed");
+		debuglog("xmlXPathEval failed");
 		return NULL;
-        }
+	}
 
-        GList* list = NULL;
+	GList* list = NULL;
 
-        int i;
-        for (i=0; i < obj->nodesetval->nodeNr; i++) {
-                xmlChar* val = xmlNodeListGetString(doc, obj->nodesetval->nodeTab[i]->xmlChildrenNode, 1);
-                list = g_list_prepend(list, g_strdup((const gchar*)val));
-	        xmlFree(val);
+	int i;
+	for (i=0; i < obj->nodesetval->nodeNr; i++) {
+		xmlChar* val = xmlNodeListGetString(doc, obj->nodesetval->nodeTab[i]->xmlChildrenNode, 1);
+		list = g_list_prepend(list, g_strdup((const gchar*)val));
+		xmlFree(val);
 	}
 
 	xmlXPathFreeObject(obj);
-        xmlXPathFreeContext(xpath_context);
+	xmlXPathFreeContext(xpath_context);
 
-        return list;
+	return list;
 }
 
 static void podcast_create_hashtable(Podcast* pcast, GList** p_etitle_list, GList** p_url_list, GList** p_size_list)
 {
-        pcast->podcasttrack_tree = g_tree_new_full(strcmp_with_data, NULL, g_free, (GDestroyNotify)podcasttrack_free);
+	pcast->podcasttrack_tree = g_tree_new_full(strcmp_with_data, NULL, g_free, (GDestroyNotify)podcasttrack_free);
 
-        GList* etitle_list = *p_etitle_list;
-        GList* url_list    = *p_url_list;
-        GList* size_list   = *p_size_list;
+	GList* etitle_list = *p_etitle_list;
+	GList* url_list    = *p_url_list;
+	GList* size_list   = *p_size_list;
 
-        int index = 0;
-        while(TRUE) {
-                if (!etitle_list || !url_list || !size_list) break;
+	int index = 0;
+	while(TRUE) {
+		if (!etitle_list || !url_list || !size_list) break;
 
-                PodcastTrack* podct = podcasttrack_new((const gchar*) etitle_list->data, (const gchar*) url_list->data,
-                                                       atol((const gchar*) size_list->data), ++index);
+		PodcastTrack* podct = podcasttrack_new((const gchar*) etitle_list->data, (const gchar*) url_list->data,
+						       atol((const gchar*) size_list->data), ++index);
 
-                g_tree_insert(pcast->podcasttrack_tree, g_strdup(podcasttrack_filename(podct)), podct);
+		g_tree_insert(pcast->podcasttrack_tree, g_strdup(podcasttrack_filename(podct)), podct);
 
-                etitle_list = g_list_delete_link(etitle_list, etitle_list);
-                url_list    = g_list_delete_link(url_list, url_list);
-                size_list   = g_list_delete_link(size_list, size_list);
-        }
+		etitle_list = g_list_delete_link(etitle_list, etitle_list);
+		url_list    = g_list_delete_link(url_list, url_list);
+		size_list   = g_list_delete_link(size_list, size_list);
+	}
 
-        *p_etitle_list = NULL;
-        *p_url_list = NULL;
-        *p_size_list = NULL;
+	*p_etitle_list = NULL;
+	*p_url_list = NULL;
+	*p_size_list = NULL;
 }
 
 static void g_list_free_all(GList** list)
 {
-        while (*list) {
-                if ((*list)->data) {
-                        g_free((*list)->data);
-                }
-                *list = g_list_delete_link(*list, *list);
-        }
-        *list = NULL;
+	while (*list) {
+		if ((*list)->data) {
+			g_free((*list)->data);
+		}
+		*list = g_list_delete_link(*list, *list);
+	}
+	*list = NULL;
 }
 
 static gchar* steal_string(GList** list)
 {
-        assert(*list!=NULL);
-        gchar* str = (gchar*) (*list)->data;
-        *list = g_list_delete_link(*list, *list);
-        return str;
+	assert(*list!=NULL);
+	gchar* str = (gchar*) (*list)->data;
+	*list = g_list_delete_link(*list, *list);
+	return str;
 }
 
 Podcast* podcast_new_from_file(const gchar* file)
 {
-        Podcast* pcast = g_new0(Podcast, 1);
+	Podcast* pcast = g_new0(Podcast, 1);
 
-        xmlDocPtr doc = xmlParseFile(file);
+	xmlDocPtr doc = xmlParseFile(file);
 
-        GList* gtitle_list = xmlXPathEvalExpressionToGList(doc, "//channel/title");
-        GList* etitle_list = xmlXPathEvalExpressionToGList(doc, "//item//title");
-        GList* url_list    = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::url");
-        GList* size_list   = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::length");
+	GList* gtitle_list = xmlXPathEvalExpressionToGList(doc, "//channel/title");
+	GList* etitle_list = xmlXPathEvalExpressionToGList(doc, "//item//title");
+	GList* url_list    = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::url");
+	GList* size_list   = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::length");
 
-        if (!gtitle_list || !etitle_list || !url_list || !size_list) {
-                debuglog("Unable to read podcast rss information");
-                g_free(pcast);
-                pcast = NULL;
-                goto cleanup;
-        }
+	if (!gtitle_list || !etitle_list || !url_list || !size_list) {
+		debuglog("Unable to read podcast rss information");
+		g_free(pcast);
+		pcast = NULL;
+		goto cleanup;
+	}
 
-        /* set name of folder (url will be set in the calling podcast_new_from_url) */
-        pcast->folder_name = steal_string(&gtitle_list);
+	/* set name of folder (url will be set in the calling podcast_new_from_url) */
+	pcast->folder_name = steal_string(&gtitle_list);
 
-        podcast_create_hashtable(pcast, &etitle_list, &url_list, &size_list);
+	podcast_create_hashtable(pcast, &etitle_list, &url_list, &size_list);
 
 cleanup:
-        g_list_free_all(&gtitle_list);
-        g_list_free_all(&etitle_list);
-        g_list_free_all(&url_list);
-        g_list_free_all(&size_list);
-        xmlFreeDoc(doc);
+	g_list_free_all(&gtitle_list);
+	g_list_free_all(&etitle_list);
+	g_list_free_all(&url_list);
+	g_list_free_all(&size_list);
+	xmlFreeDoc(doc);
 
-        return pcast;
+	return pcast;
 }
 
 Podcast* podcast_new_from_url(const gchar* url_path)
 {
-        char* tmppath = urlfetch_download_tmpfile(url_path);
-        if (NULL == tmppath) {
-                return NULL;
-        }
+	char* tmppath = urlfetch_download_tmpfile(url_path);
+	if (NULL == tmppath) {
+		return NULL;
+	}
 
-        Podcast* podc = podcast_new_from_file(tmppath);
-        g_free(tmppath);
-        return podc;
+	Podcast* podc = podcast_new_from_file(tmppath);
+	g_free(tmppath);
+	return podc;
 }
 
 void podcast_free(Podcast* pcast)
 {
-        if (pcast) {
-                g_free(pcast->folder_name);
-                g_free(pcast->url);
-                g_tree_destroy(pcast->podcasttrack_tree);
-                g_free(pcast);
-        }
+	if (pcast) {
+		g_free(pcast->folder_name);
+		g_free(pcast->url);
+		g_tree_destroy(pcast->podcasttrack_tree);
+		g_free(pcast);
+	}
 }
 
 static gboolean foreach_callback (gpointer key, gpointer value, gpointer user_data)
 {
-        pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
+	pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
 
-        callback((gchar*)key);
+	callback((gchar*)key);
 
-        return FALSE;
+	return FALSE;
 }
 
 void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback)
 {
-        g_tree_foreach(pcast->podcasttrack_tree, foreach_callback, callback);
+	g_tree_foreach(pcast->podcasttrack_tree, foreach_callback, callback);
 }
 
 PodcastTrack* podcast_get_track(Podcast* pcast, const gchar* track_name)
 {
-        return (PodcastTrack*)g_tree_lookup(pcast->podcasttrack_tree, track_name);
+	return (PodcastTrack*)g_tree_lookup(pcast->podcasttrack_tree, track_name);
 }
 
 gboolean podcast_has_track(Podcast* pcast, const gchar* item_name)
 {
-        return (FALSE != podcast_get_track(pcast, item_name));
+	return (FALSE != podcast_get_track(pcast, item_name));
 }
 
 const gchar* podcast_folder_name(Podcast* pcast)
 {
-        return pcast->folder_name;
+	return pcast->folder_name;
 }
 
 

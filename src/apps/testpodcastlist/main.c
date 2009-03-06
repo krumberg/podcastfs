@@ -21,12 +21,12 @@
 
 static void print_foldername(const gchar* foldername)
 {
-        puts(foldername);
+	puts(foldername);
 }
 
 int main(int argc, char *argv[])
 {
-        PodcastList* list = podcastlist_get_instance();
-        podcastlist_foreach_foldername(list, print_foldername);
-        return 0;
+	PodcastList* list = podcastlist_get_instance();
+	podcastlist_foreach_foldername(list, print_foldername);
+	return 0;
 }

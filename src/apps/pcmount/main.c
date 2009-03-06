@@ -31,5 +31,5 @@
 
 int main(int argc, char *argv[])
 {
-        return podcastfs_init(argc, argv);
+	return podcastfs_init(argc, argv);
 }

@@ -22,25 +22,25 @@
 
 void debuglog(const char* line, ...)
 {
-        static FILE* file = NULL;
+	static FILE* file = NULL;
 
-        if (file == NULL) {
-                file = fopen("debug.txt", "wt");
+	if (file == NULL) {
+		file = fopen("debug.txt", "wt");
 
-                void closefile() {
-                        fclose(file);
-                }
-                atexit(closefile);
-        }
+		void closefile() {
+			fclose(file);
+		}
+		atexit(closefile);
+	}
 
-        char buf[128];
-        va_list args;
+	char buf[128];
+	va_list args;
 
-        va_start(args, line);
-        vsnprintf(buf, 1023, line, args);
-        va_end(args);
+	va_start(args, line);
+	vsnprintf(buf, 1023, line, args);
+	va_end(args);
 
-        fprintf(file, "%s\n", buf);
-        fflush(file);
+	fprintf(file, "%s\n", buf);
+	fflush(file);
 }
 

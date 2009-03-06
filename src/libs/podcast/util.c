@@ -21,7 +21,7 @@
 
 gint strcmp_with_data(gconstpointer a, gconstpointer b, gpointer user_data)
 {
-        return strcmp((const char*)a, (const char*)b);
+	return strcmp((const char*)a, (const char*)b);
 }
 
 

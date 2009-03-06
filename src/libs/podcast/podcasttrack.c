@@ -23,48 +23,48 @@
 #include <podcast/podcasttrack.h>
 
 struct PodcastTrack {
-        gchar* filename;
-        gchar* url;
-        size_t size;
-        int index;
+	gchar* filename;
+	gchar* url;
+	size_t size;
+	int index;
 };
 
 PodcastTrack* podcasttrack_new(const gchar* title, const gchar* url, size_t size, int index)
 {
-        PodcastTrack* podct = g_new(PodcastTrack, 1);
+	PodcastTrack* podct = g_new(PodcastTrack, 1);
 
-        podct->filename = g_strdup_printf("%03d_%s%s", index, title, ".mp3");
-        podct->url      = g_strdup(url);
-        podct->size     = size;
-        podct->index    = index;
+	podct->filename = g_strdup_printf("%03d_%s%s", index, title, ".mp3");
+	podct->url      = g_strdup(url);
+	podct->size     = size;
+	podct->index    = index;
 
-        return podct;
+	return podct;
 }
 
 void podcasttrack_free(PodcastTrack* podct)
 {
-        if (podct) {
-                g_free(podct->filename);
-                g_free(podct->url);
-                g_free(podct);
-        }
+	if (podct) {
+		g_free(podct->filename);
+		g_free(podct->url);
+		g_free(podct);
+	}
 }
 
 const gchar* podcasttrack_filename(PodcastTrack* podct)
 {
-        return podct->filename;
+	return podct->filename;
 }
 
 size_t podcasttrack_size(PodcastTrack* podct)
 {
-        return podct->size;
+	return podct->size;
 }
 
 int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset)
 {
-        if (urlfetch_data_in_range(podct->url, buf, size, offset) < 0) {
-                return -1;
-        }
+	if (urlfetch_data_in_range(podct->url, buf, size, offset) < 0) {
+		return -1;
+	}
 
-        return size;
+	return size;
 }
