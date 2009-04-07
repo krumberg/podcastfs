@@ -31,7 +31,7 @@ typedef struct {
 	char* buf;
 } DataBuffer;
 
-static size_t write_buffer_callback(void *ptr, size_t size, size_t nmemb, void *data)
+static size_t write_buffer_callback(void* ptr, size_t size, size_t nmemb, void* data)
 {
 	size_t realsize = size * nmemb;
 	DataBuffer *dbuf = (DataBuffer*) data;
@@ -70,7 +70,7 @@ int urlfetch_data_in_range(const char* url, char* buf, size_t size, size_t offse
 }
 
 
-static size_t write_file_callback(void *ptr, size_t size, size_t nmemb, void *data)
+static size_t write_file_callback(void* ptr, size_t size, size_t nmemb, void* data)
 {
 	FILE* file = (FILE*) data;
 	return fwrite(ptr, size, nmemb, file);
@@ -78,7 +78,7 @@ static size_t write_file_callback(void *ptr, size_t size, size_t nmemb, void *da
 
 char* urlfetch_download_tmpfile(const char* url)
 {
-	CURL *curl_handle;
+	CURL* curl_handle;
 
 	char* tmppath = g_strdup("/tmp/rssfileXXXXXX");
 
