@@ -58,8 +58,12 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
 
         char buf[512];
         while(1) {
-                fgets(buf, 511, rss_conf_file);
-                buf[strlen(buf)] = 0;
+                if (fgets(buf, 511, rss_conf_file) != buf) {
+                        break;
+                }
+                if (strlen(buf) > 0) {
+                        buf[strlen(buf) - 1] = 0;
+                }
                 const char* p_beg = strstr(buf, "http");
                 if (NULL == p_beg) {
                         break;

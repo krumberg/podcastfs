@@ -73,8 +73,7 @@ int urlfetch_data_in_range(const char* url, char* buf, size_t size, size_t offse
 static size_t write_file_callback(void *ptr, size_t size, size_t nmemb, void *data)
 {
         FILE* file = (FILE*) data;
-        fwrite(ptr, size, nmemb, file);
-        return (nmemb * size);
+        return fwrite(ptr, size, nmemb, file);
 }
 
 char* urlfetch_download_tmpfile(const char* url)
