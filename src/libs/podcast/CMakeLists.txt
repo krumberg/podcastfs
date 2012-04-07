@@ -8,7 +8,7 @@ project(podcast)
 
 find_package(PkgConfig)
 pkg_check_modules(GLIB glib-2.0)
-pkg_check_modules(XML xml2)
+pkg_search_module(XML xml2 libxml-2.0)
 
 add_library(podcast
   podcastlist.c
