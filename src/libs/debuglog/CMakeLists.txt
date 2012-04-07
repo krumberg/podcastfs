@@ -5,6 +5,3 @@ project(debuglog)
 add_library(debuglog
   debuglog.c
 )
-
-target_link_libraries(debuglog})
-
