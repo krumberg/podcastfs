@@ -47,7 +47,7 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
 	struct passwd* pws;
 	pws = getpwuid(geteuid());
 
-	char conf_path[512];
+	char conf_path[512] = {0,};
 	sprintf(conf_path, "%s/.podcastfslist", getenv("HOME"));
 
 	FILE* rss_conf_file = fopen(conf_path, "rt");
@@ -56,7 +56,7 @@ static void podcastlist_add_default_podcasts(PodcastList* list)
 		return;
 	}
 
-	char buf[512];
+	char buf[512] = {0,};
 	while(1) {
 		if (fgets(buf, 511, rss_conf_file) != buf) {
 			break;
