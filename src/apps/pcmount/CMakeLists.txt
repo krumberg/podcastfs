@@ -14,6 +14,6 @@ add_executable(pcmount
 )
 
 include_directories( ${FUSE_INCLUDE_DIRS} )
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FILE_OFFSET_BITS=64 -fnested-functions")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D_FILE_OFFSET_BITS=64")
 target_link_libraries(pcmount podcast ${FUSE_LIBRARIES} ${GLIB_LIBRARIES} ${XML_LIBRARIES} ${CURL_LIBRARIES})
 
