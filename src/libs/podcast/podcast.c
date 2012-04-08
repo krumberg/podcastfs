@@ -183,7 +183,7 @@ PodcastTrack* podcast_get_track(Podcast* pcast, const gchar* track_name)
 
 gboolean podcast_has_track(Podcast* pcast, const gchar* item_name)
 {
-	return (FALSE != podcast_get_track(pcast, item_name));
+	return (podcast_get_track(pcast, item_name) != NULL);
 }
 
 const gchar* podcast_folder_name(Podcast* pcast)
