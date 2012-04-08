@@ -51,6 +51,7 @@ int urlfetch_data_in_range(const char* url, char* buf, size_t size, size_t offse
 
 	curl_handle = curl_easy_init();
 
+	curl_easy_setopt(curl_handle, CURLOPT_FOLLOWLOCATION, 1);
 	curl_easy_setopt(curl_handle, CURLOPT_URL, url);
 
 	char srange[32] = {0,};
