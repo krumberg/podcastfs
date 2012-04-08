@@ -33,7 +33,7 @@ void debuglog(const char* line, ...)
 		atexit(closefile);
 	}
 
-	char buf[128];
+	char buf[128] = {0,};
 	va_list args;
 
 	va_start(args, line);
