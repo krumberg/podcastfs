@@ -37,7 +37,7 @@ void debuglog(const char* line, ...)
 	va_list args;
 
 	va_start(args, line);
-	vsnprintf(buf, 1023, line, args);
+	vsnprintf(buf, sizeof(buf), line, args);
 	va_end(args);
 
 	fprintf(file, "%s\n", buf);
