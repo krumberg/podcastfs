@@ -16,7 +16,7 @@ make -j3
 Create configuration
 --------------------
 
-Create a file ~/podcastfslist and insert one rss-url per line.
+Create a file ~/.podcastfslist and insert one rss-url per line.
 
 Run pcmount
 -----------
