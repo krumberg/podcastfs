@@ -11,4 +11,5 @@ if (NOT "${GLIB_LIBRARY_DIRS}" STREQUAL "")
 endif()
 
 add_subdirectory(apps)
+add_subdirectory(test)
 

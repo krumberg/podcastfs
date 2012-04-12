@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2enclosuresfull.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+    <channel>
+        <title>The Linux Action Show! MP3</title>
+        <link>http://www.jupiterbroadcasting.com</link>
+        <description>Audio versions of The Linux Action Show! A show that covers everything geeks care about in the open source and Linux world. Get a solid dose of Linux, gadgets, news events and much more!</description>
+        <generator>Feeder 2.2.6(1584); Mac OS X Version 10.7.2 (Build 11C74) http://reinventedsoftware.com/feeder/</generator>
+        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+        <language>en</language>
+        <copyright>Jupiter Broadcasting 2009</copyright>
+        <pubDate>Sat, 07 Apr 2012 19:52:51 -0700</pubDate>
+        <lastBuildDate>Sat, 07 Apr 2012 19:52:51 -0700</lastBuildDate>
+        <image><link>http://creativecommons.org/licenses/by-sa/2.0/</link><url>http://creativecommons.org/images/public/somerights20.gif</url><title>Some Rights Reserved</title></image>
+
+        <itunes:author>chris@jupiterbroadcasting.com</itunes:author>
+        <itunes:subtitle>Linux enthusiasts talk top news stories, current trends and any other subject regarding Linux and Open Source!</itunes:subtitle>
+        <itunes:summary>Linux enthusiasts talk top news stories, current trends and any other subject regarding Linux and Open Source!</itunes:summary>
+        <itunes:keywords>linux,news,ubuntu,tech</itunes:keywords>
+        <itunes:explicit>no</itunes:explicit>
+        <itunes:image href="http://www.linuxactionshow.com/images/tux-jedi_sickness_fun.png" />
+
+        <itunes:block>no</itunes:block>
+
+        <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/TheLinuxActionShow" /><feedburner:info uri="thelinuxactionshow" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><media:copyright>Jupiter Broadcasting 2009</media:copyright><media:thumbnail url="http://www.linuxactionshow.com/images/tux-jedi_sickness_fun.png" /><media:keywords>linux,news,ubuntu,tech</media:keywords><media:category scheme="http://www.itunes.com/dtds/podcast-1.0.dtd">Technology/Tech News</media:category><itunes:owner><itunes:email>chris@linuxactionshow.com</itunes:email></itunes:owner><itunes:category text="Technology"><itunes:category text="Tech News" /></itunes:category><item>
+            <title>Webcam Studio Howto | LAS | s21e04</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/v2xRZgkM8do/</link>
+            <description>&lt;p&gt;We’re back in the ACTION saddle, and we’re playing Linux catchup. We cover the week’s top news stories, and teach you how to use WebCam Studio LIKE A BOSS!&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/OB6m2XP2lqcAljvlEax5JaQ7Wms/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/OB6m2XP2lqcAljvlEax5JaQ7Wms/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/OB6m2XP2lqcAljvlEax5JaQ7Wms/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/OB6m2XP2lqcAljvlEax5JaQ7Wms/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/v2xRZgkM8do" height="1" width="1"/&gt;</description>
+            <pubDate>Sat, 07 Apr 2012 19:51:59 -0700</pubDate>
+
+            <guid isPermaLink="false">0855A18B-270A-4739-A15D-143BC954E98A</guid>
+            <itunes:subtitle>We’re back in the ACTION saddle, and we’re playing Linux catchup. We cover the week’s top news stories, and teach you how to use WebCam Studio LIKE A BOSS!
+
+And so much more!
+
+All this week on, The Linux Action Show!</itunes:subtitle>
+            <itunes:summary>We’re back in the ACTION saddle, and we’re playing Linux catchup. We cover the week’s top news stories, and teach you how to use WebCam Studio LIKE A BOSS!
+
+And so much more!
+
+All this week on, The Linux Action Show!</itunes:summary>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-System76BigRigLASS20e09678.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/pgM_fF43mqM/LinuxActionShowEP204-MP3.mp3" fileSize="34301233" type="audio/mpeg" /><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/18646/webcam-studio-howto-las-s21e04/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/pgM_fF43mqM/LinuxActionShowEP204-MP3.mp3" length="34301233" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jbmirror/LinuxActionShowEP204-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>Windows 8 Preview | WAS | s21e03</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/dQEzpsgkSbE/</link>
+            <description>&lt;p&gt;Microsoft is rolling out their latest version of Windows, and it changes everything. Tune in to find out just how revolutionary this amazing new UI is and how it leaves the competition in the duts!&lt;/p&gt;
+
+&lt;p&gt;PLUS: Microsoft cracks down on evil doers&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Windows Action Show!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/Y9M_gObiHOKQEVLCdC2fZ34Qfuo/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Y9M_gObiHOKQEVLCdC2fZ34Qfuo/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/Y9M_gObiHOKQEVLCdC2fZ34Qfuo/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Y9M_gObiHOKQEVLCdC2fZ34Qfuo/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/dQEzpsgkSbE" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 01 Apr 2012 14:05:00 -0700</pubDate>
+
+            <guid isPermaLink="false">BEC212AF-EA41-43BA-9AA1-85C0271CDA70</guid>
+            <itunes:subtitle>Microsoft is rolling out their latest version of Windows, and it changes everything. Tune in to find out just how revolutionary this amazing new UI is and how it leaves the competition in the duts!
+
+PLUS: Microsoft cracks down on evil doers
+</itunes:subtitle>
+            <itunes:summary>Microsoft is rolling out their latest version of Windows, and it changes everything. Tune in to find out just how revolutionary this amazing new UI is and how it leaves the competition in the duts!
+
+PLUS: Microsoft cracks down on evil doers
+
+And so much more!
+
+All this week on, The Windows Action Show!</itunes:summary>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-Windows8PreviewWASS21e03218.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/__ita7EEVfs/LinuxActionShowEP203-MP3.mp3" fileSize="25815906" type="audio/mpeg" /><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/18491/windows-8-preview-was-s21e03/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/__ita7EEVfs/LinuxActionShowEP203-MP3.mp3" length="25815906" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jbmirror/LinuxActionShowEP203-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>Linux Games FTW | LAS | s21e02</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/P70eqnv_Q18/</link>
+            <description>&lt;p&gt;We’re hosting an action LAN party and we frag through our favorite Linux games! Has Linux won the gaming crown? Or will our LAN party blow up in our face? Tune in to find out!&lt;/p&gt;
+
+&lt;p&gt;Plus: Has Banshee jumped the shark? We debate!&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/NGSFF7ZrX1BWfwZUeHNY2CFh7t0/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/NGSFF7ZrX1BWfwZUeHNY2CFh7t0/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/NGSFF7ZrX1BWfwZUeHNY2CFh7t0/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/NGSFF7ZrX1BWfwZUeHNY2CFh7t0/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/P70eqnv_Q18" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 25 Mar 2012 16:18:40 -0700</pubDate>
+
+            <guid isPermaLink="false">57A27E8E-82F7-4B28-A737-D09A1A8CB501</guid>
+            <itunes:subtitle>We’re hosting an action LAN party and we frag through our favorite Linux games! Has Linux won the gaming crown? Or will our LAN party blow up in our face? Tune in to find out!
+
+Plus: Has Banshee jumped the shark? We debate!</itunes:subtitle>
+            <itunes:summary>We’re hosting an action LAN party and we frag through our favorite Linux games! Has Linux won the gaming crown? Or will our LAN party blow up in our face? Tune in to find out!
+
+Plus: Has Banshee jumped the shark? We debate!
+
+And so much more!
+
+All this week on, The Linux Action Show!</itunes:summary>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-LinuxGamesFTWLASS21e02840.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/qSPg9CQvKJo/LinuxActionShowEP202-MP3.mp3" fileSize="41266656" type="audio/mpeg" /><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/18226/linux-games-ftw-las-s21e02/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/qSPg9CQvKJo/LinuxActionShowEP202-MP3.mp3" length="41266656" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jnite/LinuxActionShowEP202-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>Bryan Hates Freedom | LAS | s21e01</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/-kgDnXBQK1A/</link>
+            <description>&lt;p&gt;We’re still hungover from episode 200, this week: We give you are thoughts and responses to our RMS interview, are we truly being negative in the freedom dimension? Tune in to find out!&lt;/p&gt;
+
+&lt;p&gt;Plus we drool over new games coming to Linux, and ask the big question: Can Crowd Funding scale to support open source?&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/8IYvg-ZwpmFfG4HRFdB2dze3rEU/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/8IYvg-ZwpmFfG4HRFdB2dze3rEU/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/8IYvg-ZwpmFfG4HRFdB2dze3rEU/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/8IYvg-ZwpmFfG4HRFdB2dze3rEU/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/-kgDnXBQK1A" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 18 Mar 2012 15:15:59 -0700</pubDate>
+
+            <guid isPermaLink="false">D59F6730-A211-46F0-8464-1E2DCEF82C4C</guid>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-BryanHatesFreedomLASS21e01400.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/mbGLlgLi27I/LinuxActionShowEP201-MP3.mp3" fileSize="50240239" type="audio/mpeg" /><itunes:subtitle>The Linux Action Show! </itunes:subtitle><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:summary>Audio versions of The Linux Action Show! A show that covers everything geeks care about in the computer industry. Get a solid dose of Linux, gadgets, news events and much more!</itunes:summary><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/18071/bryan-hates-freedom-las-s21e01/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/mbGLlgLi27I/LinuxActionShowEP201-MP3.mp3" length="50240239" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jnite/LinuxActionShowEP201-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>Richard Stallman | GNU/LAS | s20e10</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/BasCBsAM5DY/</link>
+            <description>&lt;p&gt;Richard Stallman joins us to celebrate our 200th episode, and we ask him about his hard stance on proprietary software and the unethical people who make a living from it.&lt;/p&gt;
+
+&lt;p&gt;Plus: His thoughts on everything from App stores to the Raspberry Pi.&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The GNU/Linux Action Show!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/hWz4raZcpJ-vzQRWXDTNRSwUrdQ/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/hWz4raZcpJ-vzQRWXDTNRSwUrdQ/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/hWz4raZcpJ-vzQRWXDTNRSwUrdQ/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/hWz4raZcpJ-vzQRWXDTNRSwUrdQ/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/BasCBsAM5DY" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 11 Mar 2012 14:56:10 -0700</pubDate>
+
+            <guid isPermaLink="false">E16D8DF2-E937-4F10-9FBF-D0D4CC09A285</guid>
+            <itunes:subtitle>Richard Stallman joins us to celebrate our 200th episode, and we ask him about his hard stance on proprietary software and the unethical people who make a living from it.
+
+Plus: His thoughts on everything from App stores to the Raspberry Pi.</itunes:subtitle>
+            <itunes:summary>Richard Stallman joins us to celebrate our 200th episode, and we ask him about his hard stance on proprietary software and the unethical people who make a living from it.
+
+Plus: His thoughts on everything from App stores to the Raspberry Pi.
+
+And so much more!
+
+All this week on, The GNU/Linux Action Show!</itunes:summary>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-RichardStallmanGNULASS20e10885.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/KHHD93JLwKo/LinuxActionShowEP200-MP3.mp3" fileSize="43934541" type="audio/mpeg" /><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/17822/richard-stallman-gnulas-s20e10/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/KHHD93JLwKo/LinuxActionShowEP200-MP3.mp3" length="43934541" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jnite/LinuxActionShowEP200-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>System76 Big Rig | LAS | s20e09</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/LtitUToxdv4/</link>
+            <description>&lt;p&gt;We’ve got the latest and greatest from System76, the new Leopard Extreme! This machine is a monster, and we try to punish it. Find out how hard it tears through our barrage of ACTION benchmarks!&lt;/p&gt;
+
+&lt;p&gt;PLUS: Linus opens a can on openSUSE, and we geek out over two new Linux games!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+
+&lt;p&gt;Thanks to&lt;/p&gt;
+
+&lt;p&gt;GoDaddy.com Use our codes LINUX to save 10% at checkout, or LINUX20 to save 20%&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/Jjf2jlwJYhImftHcOPSbmc1oSl8/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Jjf2jlwJYhImftHcOPSbmc1oSl8/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/Jjf2jlwJYhImftHcOPSbmc1oSl8/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/Jjf2jlwJYhImftHcOPSbmc1oSl8/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/LtitUToxdv4" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 04 Mar 2012 15:30:40 -0800</pubDate>
+
+            <guid isPermaLink="false">B0BF1A6F-F3CD-4BB3-BC79-80E535683E8A</guid>
+            <itunes:subtitle>We’ve got the latest and greatest from System76, the new Leopard Extreme! This machine is a monster, and we try to punish it. Find out how hard it tears through our barrage of ACTION benchmarks!
+
+PLUS: Linus opens a can on openSUSE!</itunes:subtitle>
+            <itunes:summary>We’ve got the latest and greatest from System76, the new Leopard Extreme! This machine is a monster, and we try to punish it. Find out how hard it tears through our barrage of ACTION benchmarks!
+
+PLUS: Linus opens a can on openSUSE, and we geek out over two new Linux games!
+
+All this week on, The Linux Action Show!
+
+Thanks to
+
+GoDaddy.com Use our codes LINUX to save 10% at checkout, or LINUX20 to save 20%</itunes:summary>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-System76BigRigLASS20e09678.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/g8nDxg8B5O8/LinuxActionShowEP199-MP3.mp3" fileSize="36833415" type="audio/mpeg" /><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/17633/system76-big-rig-las-s20e09/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/g8nDxg8B5O8/LinuxActionShowEP199-MP3.mp3" length="36833415" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jnite/LinuxActionShowEP199-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>Your OwnCloud | LAS | s20e08</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/MsRJP93W_3I/</link>
+            <description>&lt;p&gt;We review OwnCloud, is the promise of replacing Google’s web services a reality? Or does this project fall short? Tune in to find out!&lt;/p&gt;
+
+&lt;p&gt;PLUS: Adobe drops support for Linux, we’ve have… THOUGHTS on that.&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+
+&lt;p&gt;Thanks to:&lt;/p&gt;
+
+&lt;p&gt;GoDaddy.com Use our codes LINUX to save 10% at checkout, or LINUX20 to save 20%&lt;/p&gt;
+
+&lt;p&gt;February $7.99 .co and .com code: cofeb7 and free Private Registration with a domain purchase or transfer code: march9&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/gGPVlpxc6vB_8CvxFn_0kvaivG0/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/gGPVlpxc6vB_8CvxFn_0kvaivG0/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/gGPVlpxc6vB_8CvxFn_0kvaivG0/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/gGPVlpxc6vB_8CvxFn_0kvaivG0/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/MsRJP93W_3I" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 26 Feb 2012 15:57:42 -0800</pubDate>
+
+            <guid isPermaLink="false">1C6E9393-34C3-4417-A06A-8BB821E0E5B8</guid>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-YourOwnCloudLASS20e08293.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/zgyxv4teuqs/LinuxActionShowEP198-MP3.mp3" fileSize="42375031" type="audio/mpeg" /><itunes:subtitle>The Linux Action Show! </itunes:subtitle><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:summary>Audio versions of The Linux Action Show! A show that covers everything geeks care about in the computer industry. Get a solid dose of Linux, gadgets, news events and much more!</itunes:summary><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/17386/your-owncloud-las-s20e08/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/zgyxv4teuqs/LinuxActionShowEP198-MP3.mp3" length="42375031" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jupiterbroadcasting/LinuxActionShowEP198-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>KDE 4.8 Review | LAS | s20e07</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/1TMT0hTGkQI/</link>
+            <description>&lt;p&gt;Is the latest release of KDE the best yet? Or really stinking terrible. Tune in to find out.&lt;/p&gt;
+
+&lt;p&gt;PLUS: We share the latest news on the Spark tablet, and so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+
+&lt;p&gt;Thanks to&lt;/p&gt;
+
+&lt;p&gt;GoDaddy.com Use our codes LINUX to save 10% at checkout, or LINUX20 to save 20%&lt;/p&gt;
+
+&lt;p&gt;Deluxe Hosting for the Price of Economy: hostfeb7&lt;/p&gt;
+
+&lt;p&gt;GOG.com Get 10% off if you buy 2 or more games like Freespace and Freespace 2.&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/3C6O3uLPuLVZDLdkiXtwUCUa5qg/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/3C6O3uLPuLVZDLdkiXtwUCUa5qg/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/3C6O3uLPuLVZDLdkiXtwUCUa5qg/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/3C6O3uLPuLVZDLdkiXtwUCUa5qg/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/1TMT0hTGkQI" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 19 Feb 2012 15:51:34 -0800</pubDate>
+
+            <guid isPermaLink="false">EE47C648-E044-4640-8971-CAD43B717BE8</guid>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-KDE48ReviewLASS20e07490.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/QW_zO40M_mY/LinuxActionShowEP197-MP3.mp3" fileSize="45760501" type="audio/mpeg" /><itunes:subtitle>The Linux Action Show! </itunes:subtitle><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:summary>Audio versions of The Linux Action Show! A show that covers everything geeks care about in the computer industry. Get a solid dose of Linux, gadgets, news events and much more!</itunes:summary><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/17092/kde-4-8-review-las-s20e07/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/QW_zO40M_mY/LinuxActionShowEP197-MP3.mp3" length="45760501" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jupiterbroadcasting/LinuxActionShowEP197-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>Sparking a Fire | LAS | s20e06</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/rvhS9k1w3PM/</link>
+            <description>&lt;p&gt;Aaron Siego joins us to talk about the new open source KDE powered tablet that he and his team are working on! Find out how hard you want one, after this week’s episode!&lt;/p&gt;
+
+&lt;p&gt;PLUS: Canonical drops Kubuntu, Microsoft throws it’s weight around, and we bust some Raspberry PI rumors!&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/I_jWXIJHUDwXg_DT79_bs7KpIMc/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/I_jWXIJHUDwXg_DT79_bs7KpIMc/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/I_jWXIJHUDwXg_DT79_bs7KpIMc/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/I_jWXIJHUDwXg_DT79_bs7KpIMc/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/rvhS9k1w3PM" height="1" width="1"/&gt;</description>
+            <pubDate>Sun, 12 Feb 2012 15:43:30 -0800</pubDate>
+
+            <guid isPermaLink="false">89FB0114-34EE-4001-BCA4-4AE286C5C3AF</guid>
+            <itunes:explicit>no</itunes:explicit>
+            <media:thumbnail url="http://a.images.blip.tv/Jupiterbroadcasting-SparkingAFireLASS20e06404.jpg" />
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/X7eYlS5VL_4/LinuxActionShowEP196-MP3.mp3" fileSize="46318737" type="audio/mpeg" /><itunes:subtitle>The Linux Action Show! </itunes:subtitle><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:summary>Audio versions of The Linux Action Show! A show that covers everything geeks care about in the computer industry. Get a solid dose of Linux, gadgets, news events and much more!</itunes:summary><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/16882/sparking-a-fire-las-s20e06/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/X7eYlS5VL_4/LinuxActionShowEP196-MP3.mp3" length="46318737" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jupiterbroadcasting/LinuxActionShowEP196-MP3.mp3</feedburner:origEnclosureLink></item>
+        <item>
+            <title>ArchBang Review  | LAS | s20e05</title>
+            <link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/ckdoR06sJck/</link>
+            <description>&lt;p&gt;We review ArchBang, is this hardcore Linux made easy? Or a simple distro you can skip? Tune in to find out!&lt;/p&gt;
+
+&lt;p&gt;PLUS: We find out which Nokia phone sells the best, HINT: It doesn’t run WINDOWS!&lt;/p&gt;
+
+&lt;p&gt;And so much more!&lt;/p&gt;
+
+&lt;p&gt;All this week on, The Linux Action Show!&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://feedads.g.doubleclick.net/~a/dhhpAx7uQzHIewvMcDY9ZjOzYaE/0/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/dhhpAx7uQzHIewvMcDY9ZjOzYaE/0/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;br/&gt;
+&lt;a href="http://feedads.g.doubleclick.net/~a/dhhpAx7uQzHIewvMcDY9ZjOzYaE/1/da"&gt;&lt;img src="http://feedads.g.doubleclick.net/~a/dhhpAx7uQzHIewvMcDY9ZjOzYaE/1/di" border="0" ismap="true"&gt;&lt;/img&gt;&lt;/a&gt;&lt;/p&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/ckdoR06sJck" height="1" width="1"/&gt;</description>
+            <pubDate>Sat, 04 Feb 2012 21:23:32 -0800</pubDate>
+
+            <guid isPermaLink="false">8F8054D9-FC16-403E-8E71-B5D8573E2605</guid>
+            <itunes:subtitle>We review ArchBang, is this hardcore Linux made easy? Or a simple distro you can skip? Tune in to find out!
+
+PLUS: We find out which Nokia phone sells the best, HINT: It doesn’t run WINDOWS!
+
+And so much more!
+
+All this week on, The Linux Action Show!</itunes:subtitle>
+            <itunes:summary>We review ArchBang, is this hardcore Linux made easy? Or a simple distro you can skip? Tune in to find out!
+
+PLUS: We find out which Nokia phone sells the best, HINT: It doesn’t run WINDOWS!
+
+And so much more!
+
+All this week on, The Linux Action Show!</itunes:summary>
+            <itunes:explicit>no</itunes:explicit>
+        <author>chris@linuxactionshow.com</author><media:content url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/dC22NajOwwk/LinuxActionShowEP195-MP3.mp3" fileSize="45360566" type="audio/mpeg" /><itunes:author>chris@linuxactionshow.com</itunes:author><itunes:keywords>linux,news,ubuntu,tech</itunes:keywords><creativeCommons:license>http://creativecommons.org/licenses/by-sa/2.0/</creativeCommons:license><feedburner:origLink>http://www.jupiterbroadcasting.com/16671/archbang-review/</feedburner:origLink><enclosure url="http://feedproxy.google.com/~r/TheLinuxActionShow/~5/dC22NajOwwk/LinuxActionShowEP195-MP3.mp3" length="45360566" type="audio/mpeg" /><feedburner:origEnclosureLink>http://traffic.libsyn.com/jnite/LinuxActionShowEP195-MP3.mp3</feedburner:origEnclosureLink></item>
+
+    <media:credit role="author">chris@jupiterbroadcasting.com</media:credit><media:rating>nonadult</media:rating><media:description type="plain">Linux enthusiasts talk top news stories, current trends and any other subject regarding Linux and Open Source!</media:description><item><title>Links for 2006-12-17 [del.icio.us]</title><link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/PDxZRyCWAlM/linuxactionshow</link><pubDate>Mon, 18 Dec 2006 00:00:00 PST</pubDate><guid isPermaLink="false">http://del.icio.us/linuxactionshow#2006-12-17</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.jokosher.org/"&gt;Jokosher Project&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/PDxZRyCWAlM" height="1" width="1"/&gt;</description><feedburner:origLink>http://del.icio.us/linuxactionshow#2006-12-17</feedburner:origLink></item><item><title>Links for 2006-12-07 [del.icio.us]</title><link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/23j1Y0JfaZ0/linuxactionshow</link><pubDate>Fri, 08 Dec 2006 00:00:00 PST</pubDate><guid isPermaLink="false">http://del.icio.us/linuxactionshow#2006-12-07</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://wiki.hydrogenaudio.org/index.php?title=Rubyripper"&gt;Rubyripper - secure Linux CD ripper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/23j1Y0JfaZ0" height="1" width="1"/&gt;</description><feedburner:origLink>http://del.icio.us/linuxactionshow#2006-12-07</feedburner:origLink></item><item><title>Links for 2006-12-05 [del.icio.us]</title><link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/akQkNqrCCRQ/linuxactionshow</link><pubDate>Wed, 06 Dec 2006 00:00:00 PST</pubDate><guid isPermaLink="false">http://del.icio.us/linuxactionshow#2006-12-05</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.howtoforge.com/automatix_ubuntu"&gt;Installing Popular Applications On Your Ubuntu Desktop With Automatix2 | HowtoForge - Linux Howtos and Tutorials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.linuxeq.com/"&gt;The Linux Equivalent Project - linuxeq.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/akQkNqrCCRQ" height="1" width="1"/&gt;</description><feedburner:origLink>http://del.icio.us/linuxactionshow#2006-12-05</feedburner:origLink></item><item><title>Links for 2006-12-01 [del.icio.us]</title><link>http://feedproxy.google.com/~r/TheLinuxActionShow/~3/xYoTscVqW_Y/linuxactionshow</link><pubDate>Sat, 02 Dec 2006 00:00:00 PST</pubDate><guid isPermaLink="false">http://del.icio.us/linuxactionshow#2006-12-01</guid><description>&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.linuxactionshow.com/forum/"&gt;Linux Action Forum - All Discussions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;img src="http://feeds.feedburner.com/~r/TheLinuxActionShow/~4/xYoTscVqW_Y" height="1" width="1"/&gt;</description><feedburner:origLink>http://del.icio.us/linuxactionshow#2006-12-01</feedburner:origLink></item></channel>
+</rss>
