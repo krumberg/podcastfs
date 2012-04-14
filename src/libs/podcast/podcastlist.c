@@ -133,7 +133,7 @@ cleanup:
 
 gboolean podcastlist_is_podcast_track(PodcastList* list, const gchar* folder_and_track)
 {
-	return (FALSE != podcastlist_get_podcast_track(list, folder_and_track));
+	return (podcastlist_get_podcast_track(list, folder_and_track) != NULL);
 }
 
 void podcastlist_foreach_trackname_in_folder(PodcastList* list, const gchar* name,
