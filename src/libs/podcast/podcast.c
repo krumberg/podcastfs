@@ -162,18 +162,40 @@ void podcast_free(Podcast* pcast)
 	}
 }
 
-static gboolean foreach_callback (gpointer key, gpointer value, gpointer user_data)
+static void count_callback(const gchar* filename, void* userparam)
 {
-	pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
+	int* nump = (int*) userparam;
 
-	callback((gchar*)key);
+	++(*nump);
+}
+
+size_t podcast_num_tracks(Podcast* podcast)
+{
+	size_t num = 0;
+
+	if (podcast) {
+		podcast_foreach_trackname(podcast, count_callback, &num);
+	}
+
+	return num;
+}
+
+static gboolean foreach_callback (gpointer key, gpointer value, gpointer userdata)
+{
+	pc_foreachname_callback_and_param* cap = (pc_foreachname_callback_and_param*) userdata;
+
+	cap->callback((gchar*)key, cap->userdata);
 
 	return FALSE;
 }
 
-void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback)
+void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback, void* userdata)
 {
-	g_tree_foreach(pcast->podcasttrack_tree, foreach_callback, callback);
+	pc_foreachname_callback_and_param cap = {0,};
+	cap.callback = callback;
+	cap.userdata = userdata;
+
+	g_tree_foreach(pcast->podcasttrack_tree, foreach_callback, &cap);
 }
 
 PodcastTrack* podcast_get_track(Podcast* pcast, const gchar* track_name)

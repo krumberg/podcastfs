@@ -21,7 +21,12 @@
 
 #include <podcast/podcasttrack.h>
 
-typedef void (*pc_foreachname_callback)(const gchar* name);
+typedef void (*pc_foreachname_callback)(const gchar* name, void* userparam);
+
+typedef struct {
+	pc_foreachname_callback callback;
+	void*                   userdata;
+} pc_foreachname_callback_and_param;
 
 typedef struct Podcast Podcast;
 
@@ -29,7 +34,9 @@ Podcast* podcast_new_from_file(const gchar* file);
 Podcast* podcast_new_from_url(const gchar* url);
 void podcast_free(Podcast* pcast);
 
-void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback);
+size_t podcast_num_tracks(Podcast* podcast);
+
+void podcast_foreach_trackname(Podcast* pcast, pc_foreachname_callback callback, void* userdata);
 gboolean podcast_has_track(Podcast* pcast, const gchar* track_name);
 PodcastTrack* podcast_get_track(Podcast* pcast, const gchar* track_name);
 const gchar* podcast_folder_name(Podcast* pcast);

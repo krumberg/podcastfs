@@ -133,7 +133,7 @@ gboolean podcastlist_is_podcast_track(PodcastList* list, const gchar* folder_and
 }
 
 void podcastlist_foreach_trackname_in_folder(PodcastList* list, const gchar* name,
-					    pc_foreachname_callback callback)
+					    pc_foreachname_callback callback, void* userdata)
 {
 	debuglog("Enter podcastlist_foreach_trackname_in_folder");
 
@@ -148,29 +148,33 @@ void podcastlist_foreach_trackname_in_folder(PodcastList* list, const gchar* nam
 
 	debuglog("About to call podcastlist_foreach_trackname");
 
-	podcast_foreach_trackname(pcast, callback);
+	podcast_foreach_trackname(pcast, callback, userdata);
 }
 
-static gboolean foreach_callback (gpointer key, gpointer value, gpointer user_data)
+static gboolean foreach_callback (gpointer key, gpointer value, gpointer userdata)
 {
 	debuglog("Called foreach_ghash_callback");
 
-	pc_foreachname_callback callback = (pc_foreachname_callback) user_data;
+	pc_foreachname_callback_and_param* cap = (pc_foreachname_callback_and_param*) userdata;
 
-	callback((gchar*)key);
+	cap->callback((gchar*)key, cap->userdata);
 
 	debuglog("Left foreach_ghash_callback");
 
 	return FALSE;
 }
 
-void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback)
+void podcastlist_foreach_foldername(PodcastList* list, pc_foreachname_callback callback, void* userdata)
 {
 	debuglog("Enter podcastlist_foreach_foldername");
 	assert(list!=NULL);
 	assert(list->podcast_tree!=NULL);
 
-	g_tree_foreach(list->podcast_tree, foreach_callback, callback);
+	pc_foreachname_callback_and_param cap = {0,};
+	cap.callback = callback;
+	cap.userdata = userdata;
+
+	g_tree_foreach(list->podcast_tree, foreach_callback, &cap);
 	debuglog("Leaving podcastlist_foreach_foldername");
 }
 

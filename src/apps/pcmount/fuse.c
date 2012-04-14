@@ -54,26 +54,34 @@ static int podcastfs_getattr(const char* path, struct stat *stbuf)
 	return 0;
 }
 
+struct filler_param {
+	fuse_fill_dir_t filler;
+	void*           buf;
+};
+
+void fill_callback(const char* item, void* userdata)
+{
+	struct filler_param* fp = (struct filler_param*) userdata;
+
+	debuglog(item);
+	fp->filler(fp->buf, item, NULL, 0);
+}
+
 static int podcastfs_readdir(const char* path, void* buf, fuse_fill_dir_t filler,
 			 off_t offset, struct fuse_file_info* fi)
 {
-	debuglog("Inside podcastfs_readdir");
-	debuglog(path);
-
-	void callback(const char* item)
-	{
-		debuglog(item);
-		filler(buf, item, NULL, 0);
-	}
-
 	PodcastList* list = podcastlist_get_instance();
 
+	struct filler_param fp = {0,};
+	fp.filler = filler;
+	fp.buf    = buf;
+
 	if (strcmp(path, "/") == 0) {
-		callback(".");
-		callback("..");
-		podcastlist_foreach_foldername(list, callback);
+		fill_callback(".", &fp);
+		fill_callback("..", &fp);
+		podcastlist_foreach_foldername(list, fill_callback, &fp);
 	} else if (podcastlist_is_podcast_folder(list, (path + 1))) {
-		podcastlist_foreach_trackname_in_folder(list, path, callback);
+		podcastlist_foreach_trackname_in_folder(list, path, fill_callback, &fp);
 	} else {
 		debuglog("podcastfs_readdir failed on path");
 		debuglog(path);

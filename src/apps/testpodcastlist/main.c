@@ -19,7 +19,7 @@
 #include <stdio.h>
 #include <podcast/podcastlist.h>
 
-static void print_foldername(const gchar* foldername)
+static void print_foldername(const gchar* foldername, void* userdata)
 {
 	puts(foldername);
 }
@@ -27,6 +27,6 @@ static void print_foldername(const gchar* foldername)
 int main(int argc, char *argv[])
 {
 	PodcastList* list = podcastlist_get_instance();
-	podcastlist_foreach_foldername(list, print_foldername);
+	podcastlist_foreach_foldername(list, print_foldername, NULL);
 	return 0;
 }

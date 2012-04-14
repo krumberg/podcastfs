@@ -20,16 +20,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static FILE* file = NULL;
+
+static void closefile() {
+	fclose(file);
+}
+
 void debuglog(const char* line, ...)
 {
-	static FILE* file = NULL;
-
 	if (file == NULL) {
 		file = fopen("debug.txt", "wt");
 
-		void closefile() {
-			fclose(file);
-		}
 		atexit(closefile);
 	}
 

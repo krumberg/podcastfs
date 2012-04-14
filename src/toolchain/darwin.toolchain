@@ -1,2 +1,0 @@
-# OS X llvm-gcc-4.2 needs these flags
-set(TOOLCHAIN_C_FLAGS "-fnested-functions")

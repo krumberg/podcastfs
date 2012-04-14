@@ -22,3 +22,15 @@ TEST(podcast_integration_tests, from_file_read_name)
 
     podcast_free(podcast);
 }
+
+TEST(podcast_integration_tests, from_file_count)
+{
+    const char* TESTRSS_FILE = "src/test/data/testrss.xml";
+
+    Podcast* podcast = podcast_new_from_file(TESTRSS_FILE);
+    ASSERT_TRUE(podcast != NULL);
+
+    ASSERT_EQ(10, podcast_num_tracks(podcast));
+
+    podcast_free(podcast);
+}
