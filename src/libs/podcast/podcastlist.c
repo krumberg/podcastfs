@@ -102,9 +102,13 @@ static PodcastTrack* podcastlist_get_podcast_track(PodcastList* list, const gcha
 	Podcast* pcast = NULL;
 	PodcastTrack* ptrack = NULL;
 
-	gchar** folder_and_track_array = g_strsplit(folder_and_track + 1, "/", 2);
+	//debuglog("before split: %s", folder_and_track);
 
-	if (NULL == folder_and_track) {
+	gchar** folder_and_track_array = NULL;
+
+	folder_and_track_array = g_strsplit(folder_and_track + 1, "/", 2);
+
+	if (strvec_len(folder_and_track_array) != 2) {
 		debuglog("Failed to split string");
 		goto cleanup;
 	}

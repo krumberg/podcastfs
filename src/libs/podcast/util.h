@@ -23,4 +23,6 @@
 
 gint strcmp_with_data(gconstpointer a, gconstpointer b, gpointer user_data);
 
+size_t strvec_len(gchar** strvec);
+
 #endif /* __UTIL.H */

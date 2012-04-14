@@ -24,4 +24,18 @@ gint strcmp_with_data(gconstpointer a, gconstpointer b, gpointer user_data)
 	return strcmp((const char*)a, (const char*)b);
 }
 
+size_t strvec_len(gchar** strvec)
+{
+	if (strvec != NULL) {
+		size_t len = 0;
+
+		while (strvec[len]) {
+			++len;
+		}
+
+		return len;
+	} else {
+		return 0;
+	}
+}
 
