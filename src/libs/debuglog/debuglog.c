@@ -34,7 +34,7 @@ void debuglog(const char* line, ...)
 		atexit(closefile);
 	}
 
-	char buf[128] = {0,};
+	char buf[512] = {0,};
 	va_list args;
 
 	va_start(args, line);
