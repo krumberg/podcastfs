@@ -66,11 +66,12 @@ int urlfetch_data_in_range(const char* url, char* buf, size_t size, size_t offse
 
 	curl_easy_cleanup(curl_handle);
 
-	if (dbuf.size < size) {
+	if (dbuf.size <= 0) {
 		return -1;
 	}
-
-	return 0;
+	else {
+		return 0;
+	}
 }
 
 
