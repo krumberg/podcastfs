@@ -70,7 +70,7 @@ int urlfetch_data_in_range(const char* url, char* buf, size_t size, size_t offse
 		return -1;
 	}
 	else {
-		return 0;
+		return dbuf.size;
 	}
 }
 
