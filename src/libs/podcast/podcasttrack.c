@@ -62,5 +62,5 @@ size_t podcasttrack_size(PodcastTrack* podct)
 
 int podcasttrack_read(PodcastTrack* podct, char* buf, size_t size, size_t offset)
 {
-	return urlfetch_data_in_range(podct->url, buf, size, offset
+	return urlfetch_data_in_range(podct->url, buf, size, offset);
 }
