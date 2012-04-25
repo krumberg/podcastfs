@@ -58,6 +58,9 @@ static GList* xmlXPathEvalExpressionToGList(xmlDocPtr doc, const gchar* expressi
 	xmlXPathFreeObject(obj);
 	xmlXPathFreeContext(xpath_context);
 
+	char debugMsg[256];
+	sprintf(debugMsg, "list length: %d", g_list_length(list));
+	debuglog(debugMsg);
 	return list;
 }
 
@@ -114,7 +117,7 @@ Podcast* podcast_new_from_file(const gchar* file)
 	xmlDocPtr doc = xmlParseFile(file);
 
 	GList* gtitle_list = xmlXPathEvalExpressionToGList(doc, "//channel/title");
-	GList* etitle_list = xmlXPathEvalExpressionToGList(doc, "//item//title");
+	GList* etitle_list = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::url/../..//title");
 	GList* url_list    = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::url");
 	GList* size_list   = xmlXPathEvalExpressionToGList(doc, "//enclosure/attribute::length");
 
