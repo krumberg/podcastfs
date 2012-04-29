@@ -11,7 +11,7 @@ mkdir bin
 cmake ../src
 
 make -j3
-</pre></code>
+</code></pre>
 
 Create configuration
 --------------------
@@ -25,7 +25,7 @@ Run pcmount
 mkdir p
 
 [path to bin directory]/apps/pcmount/pcmount p
-</pre></code>
+</code></pre>
 
 The directory p should now contain your mounted files.
 
