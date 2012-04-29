@@ -29,3 +29,19 @@ mkdir p
 
 The directory p should now contain your mounted files.
 
+Run tests
+---------
+
+Ideally all non-trival code in podcastfs should be covered by automated testcases.
+
+To run the integration tests, move to the root folder and execute (assumes that "bin" is your build folder)
+
+<pre><code>
+./bin/test/integration-tests/integration-tests
+</code></pre>
+
+To run the unit test, move to the root folder and execute
+
+<pre><code>
+./bin/test/unit-tests/unit-tests
+</code></pre>
